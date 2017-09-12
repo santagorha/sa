@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- link rel="stylesheet" href="resources/css/onsen-css-components.css" -->
+  <!-- link rel="stylesheet" href="resources/css/onsen-css-components.min.css" -->
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+  <script src="js/auth/login.js"></script>
+</head>
+
+<body style="background-color: #0060ae">
+
+  <ons-navigator id="myNavigator" page="login.html"></ons-navigator>
+  <!-- Página de logeo -->
+  <template id="login.html">
+    <ons-page id="login">
+      <div style="text-align: center; margin-top: 30px;">
+        <p>Login</p>
+        <p>
+          <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+          <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+        </p>
+        <div id = "errorMessage" style="display: none;">
+          Nombre o usuario no validos
+        </div>
+      </p>
+      <ons-button id="login">Login</ons-button>
+      <ons-button id="reestablecer">Reestablecer</ons-button>
+    </div>
+  </ons-page>
+</template>
+<!-- Página home -->
+<template id="home.html">
+  <ons-page id="home">
+    <ons-toolbar>
+      <div class="center"></div>
+    </ons-toolbar>
+    <p>This is the second page.</p>
+  </ons-page>
+</template>
+</body>
+
+</html>
