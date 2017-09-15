@@ -12,12 +12,27 @@
 
 <body style="background-color: #0060ae">
 
+
   <ons-navigator id="myNavigator" page="login.html"></ons-navigator>
   <!-- Página de logeo -->
   <template id="login.html">
-    <ons-page id="login">
-      <div style="text-align: center; margin-top: 30px;">
-        <p>Login</p>
+	<ons-page id="login">
+		
+	<style>
+		.page__content
+		{
+			background: #0458a0 !important;
+		}
+		.button
+		{
+			background: rgba(24,31,194,0.23);
+		}
+	</style>
+		<div>
+			<center><img src="img/poli_g.jpg" style="width:70%;margin-top:100px"/></center>
+		</div>
+      <div style="text-align: center; margin-top: 50px;">
+        <FONT FACE="impact" SIZE=6 COLOR="white">PoliGran 101</FONT>
         <p>
           <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
         </p>
@@ -36,7 +51,7 @@
 
 <!-- Mensaje error -->
 <ons-toast id="error-auth">
-  Error de usuario o contraseña
+  Nombre o usuario no validos
 </ons-toast>
 
 <!-- Página home -->
