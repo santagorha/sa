@@ -12,21 +12,59 @@
 		
 	</head>
 	
-	<body>
-	
+	<body>	
 		<header>
-			<div class="container">
-				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
-					<FONT FACE="impact" SIZE=6 COLOR="white">M</FONT>
+			<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="background:#0458a0">
+				<div class="container">
+					<div class="navbar-header col-lg-1" style="float: left"> <!-- Div del botón menu en celulares -->
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#opciones" style="margin-left:10px">
+							<span class="sr-only">Desplegar/Ocultar opciones</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="col-sm-12 col-lg-2 collapse navbar-collapse" id="opciones" style="float:left; background:#0458a0"><!-- Div del menu desplegable -->
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+									<FONT FACE="impact" SIZE=6 COLOR="white">M</FONT>
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" style="background:#10305c" role="menu">
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Perfil</FONT></a></li>
+									<li class="divider"></li>
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Próximos Eventos</FONT></a></li>
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Elementos Guardados</FONT></a></li>
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Mis Eventos</FONT></a></li>
+									<li class="divider"></li>
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Historial</FONT></a></li>
+									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Configuración</FONT></a></li>
+								</ul>	
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-lg-8"> <!-- Div del titulo -->
+						<FONT FACE="impact" SIZE=6 COLOR="white">PoliGran 101</FONT>
+						<form action="" class="navbar-form navbar-right" role="search"><!-- Div de busqueda -->
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Buscar">
+							</div>
+							<button type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-search">
+							</button>
+						</form>
+					</div>
 				</div>
-				<div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
-					<FONT FACE="impact" SIZE=6 COLOR="white">PoliGran 101</FONT>
-				</div>
-			</div>
+			</nav>
 		</header>
-	
 		
-		
+		<section class="jumbotron">
+			<div class="container">
+				<h1>Eventos</h1>
+				<p>Visor de Eventos</p>
+			</div>
+		</section>
 		
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
