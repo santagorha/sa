@@ -11,20 +11,44 @@
   <script src="js/auth/login.js"></script>
 </head>
 
-<body>
-  <div style="text-align: center; margin-top: 30px;">
-    <p>
-      Poligran
-    </p>
+<body >
+  <div>
+    <center><img id="logo" src="img/logo.jpg"/></center>
+  </div>
+  <div style="text-align: center; margin-top: 50px;">
     <p>
       <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
     </p>
     <p>
       <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
     </p>
-    <ons-button id="login" onclick="authUser()">Login</ons-button>
-    <ons-button id="reestablecer" onclick="reestablecer()">Reestablecer</ons-button>
+    <div style="align-text:center; margin-top:10px">
+      <ons-button id="login" onclick="authUser()">Login</ons-button>
+    </div>
+    <div style="align-text:center; margin-top:10px">
+      <a href="https://cpo.poligran.edu.co/">Olvidé mi contraseña</a>
+    </div>
+
   </div>
+  <style>
+  body {
+    background-color: #0458a0;
+  }
+  .button
+  {
+    background: rgba(24,31,194,0.23);
+  }
+  #logo {
+    max-width: 100%;
+    height: auto !important;
+  }
+  a {
+    color: white;
+  }
+  .text-input {
+    color : white;
+  }
+  </style>
 </body>
 
 </html>
