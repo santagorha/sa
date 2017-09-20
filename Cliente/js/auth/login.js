@@ -6,7 +6,7 @@ var authUser = function() {
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
   if (username && password === 'secret') {
     localStorage.setItem('myPoliUser', username);
-    window.location.replace("index.html");
+    window.location.replace("content.html");
   }
   else {
     ons.notification.alert('Datos de usuario incorrectos.');
