@@ -1,0 +1,40 @@
+
+
+<form id="frmRestablecer" action="validaremail.php" method="post">
+  <div class="panel panel-default">
+    </style>
+    <div class="panel-heading"><div style="text-align: center; margin-top: 50px;"><FONT FACE="impact" SIZE=6 COLOR="white">Recuperar Clave</FONT>  </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="email"><div style="text-align: left; margin-left: 300px;margin-top: 90px;"> <FONT FACE="impact" SIZE=3 COLOR="black">Escribe el email asociado a tu cuenta para recuperar tu clave: </label></FONT>
+        <input type="email" id="email" class="form-control" name="email" required>
+      </div>
+      <div class="form-group">
+        <div style="text-align: center; margin-top: 120px;"><input type="submit" class="btn btn-primary" value="Recuperar Clave" >
+      </div>
+    </div>
+  </div>
+</form>
+<style>
+body {background-color: #0458a0 !important;}
+
+ 
+<div id="mensaje"></div>
+
+<script>
+  $(document).ready(function(){
+    $("#frmRestablecer").submit(function(event){
+      event.preventDefault();
+      $.ajax({
+        url:'validaremail.php',
+        type:'post',
+        dataType:'json',
+        data:$("#frmRestablecer").serializeArray()
+      }).done(function(respuesta){
+        $("#mensaje").html(respuesta.mensaje);
+        $("#email").val('email');
+      });
+    });
+  });
+</script>
+
