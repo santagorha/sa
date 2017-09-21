@@ -11,27 +11,28 @@
   <script src="js/auth/login.js"></script>
 </head>
 
-<body >
-  <div>
-    <center><img id="logo" src="img/logo.jpg"/></center>
-  </div>
-  <div style="text-align: center; margin-top: 50px;">
-    <p>
-      <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
-    </p>
-    <p>
-      <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
-    </p>
-    <div style="align-text:center; margin-top:10px">
-      <ons-button id="login" onclick="authUser()">Login</ons-button>
+<body>
+  <ons-page>
+    <div>
+      <center><img id="logo" src="img/logo.jpg"/></center>
     </div>
-    <div style="align-text:center; margin-top:10px">
-      <a href="https://cpo.poligran.edu.co/">Olvidé mi contraseña</a>
+    <div style="text-align: center; margin-top: 50px;">
+      <p>
+        <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+      </p>
+      <p>
+        <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+      </p>
+      <div style="align-text:center; margin-top:10px">
+        <ons-button id="login" onclick="authUser()">Login</ons-button>
+      </div>
+      <div style="align-text:center; margin-top:10px">
+        <a href="https://cpo.poligran.edu.co/">Olvidé mi contraseña</a>
+      </div>
     </div>
-
-  </div>
+  </ons-page>
   <style>
-  body {
+  .page__background {
     background-color: #0458a0;
   }
   .button

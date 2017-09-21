@@ -1,3 +1,11 @@
+var myUser = localStorage.getItem("myPoliUser");
+
+document.addEventListener('init', function(event) {
+  if (myUser) {
+    window.location.replace("content.html");
+  }
+});
+
 var authUser = function() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
