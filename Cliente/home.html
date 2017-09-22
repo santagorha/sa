@@ -1,73 +1,99 @@
-<!DOCTYPE html>
+<ons-splitter><!--Menú desplegable-->
+  <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <ons-list-item onclick="fn.load('user.html')" tappable>
+          Nombre Apellido
+          Código Estudiante
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('saved.html')" tappable>
+          Eventos Guardados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('reserved.html')" tappable>
+          Eventos Reservados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('settings.html')" tappable>
+          Configuraciones
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable>
+          About
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side><ons-splitter-content id="content" page="saved.html"></ons-splitter-content>
+</ons-splitter>
+  
 
-<html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>PG 101 Home</title>
-		<meta name="viewport" content="width=device-width, user-scalable= no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="css/estilosdante.css">
-		
-	</head>
-	
-	<body>	
-		<header>
-			<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="background:#0458a0">
-				<div class="container">
-					<div class="navbar-header col-lg-1" style="float: left"> <!-- Div del botón menu en celulares -->
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#opciones" style="margin-left:10px">
-							<span class="sr-only">Desplegar/Ocultar opciones</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-					<div class="col-sm-12 col-lg-2 collapse navbar-collapse" id="opciones" style="float:left; background:#0458a0"><!-- Div del menu desplegable -->
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-									<FONT FACE="impact" SIZE=6 COLOR="white">M</FONT>
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu" style="background:#10305c" role="menu">
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Perfil</FONT></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Próximos Eventos</FONT></a></li>
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Elementos Guardados</FONT></a></li>
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Mis Eventos</FONT></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Historial</FONT></a></li>
-									<li><a href="#"><FONT FACE="impact" SIZE=3 COLOR="white">Configuración</FONT></a></li>
-								</ul>	
-							</li>
-						</ul>
-					</div>
-					<div class="col-xs-12 col-lg-8"> <!-- Div del titulo -->
-						<FONT FACE="impact" SIZE=6 COLOR="white">PoliGran 101</FONT>
-						<form action="" class="navbar-form navbar-right" role="search"><!-- Div de busqueda -->
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Buscar">
-							</div>
-							<button type="submit" class="btn btn-primary">
-								<span class="glyphicon glyphicon-search">
-							</button>
-						</form>
-					</div>
-				</div>
-			</nav>
-		</header>
-		
-		<section class="jumbotron">
-			<div class="container">
-				<h1>Eventos</h1>
-				<p>Visor de Eventos</p>
-			</div>
-		</section>
-		
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.js"></script>
-	</body>
-	
-</html>
+<ons-page id="home">
+  <ons-toolbar style="background:#0458a0; height:50px"> <!--Barra de presentación-->
+    <div class="center">PoliGran 101</div>
+    <div class="left">
+      <ons-toolbar-button onclick="fn.open()">
+        <ons-icon icon="ion-navicon"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="md-zoom-in"></ons-icon> 
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  
+  
+  
+  
+  
+  
+  <ons-tabbar position="down"><!--Barra de iconos-->
+    <ons-tab page="home.html" label="Próximos" spin icon="md-spinner" badge="99" active>
+    </ons-tab>
+    <ons-tab page="saved.html" label="Guardados" icon="fa-file" active-icon="md-face">
+    </ons-tab>
+    <ons-tab page="reserved.html" label="Reservados" icon="ion-calendar" active-icon="md-face">
+    </ons-tab>
+  </ons-tabbar>
+  
+</ons-page>
+
+  
+<template id="saved.html">
+  <ons-page id="saved">
+    <p style="text-align: center;">
+      Aquí los eventos guardados.
+    </p>
+  </ons-page>
+</template>
+
+<template id="reserved.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí los eventos reservados.
+    </p>
+  </ons-page>
+</template>
+
+<template id="user.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí el perfil del usuario.
+    </p>
+  </ons-page>
+</template>
+
+<template id="settings.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí va las configuraciones de la APP.
+    </p>
+  </ons-page>
+</template>
+
+<template id="about.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí el credito del desarrollo.
+    </p>
+  </ons-page>
+</template>
+
