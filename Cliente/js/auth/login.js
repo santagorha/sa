@@ -6,17 +6,34 @@ document.addEventListener('init', function(event) {
   }
 });
 
+// document.addEventListener("deviceready", onDeviceReady, false);
+// function onDeviceReady() {
+//   ons.notification.toast(device.uuid);
+// };
+
 var authUser = function() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
-  //Hace validación de usuario
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
-  if (username && password === 'secret') {
-    localStorage.setItem('myPoliUser', username);
-    window.location.replace("content.html");
-  }
-  else {
-    ons.notification.alert('Datos de usuario incorrectos.');
-  }
+  var urlReq = "http://localhost:8080/random?";
+  urlReq += "username=";
+  urlReq += username;
+  urlReq += "&";
+  urlReq += "password=";
+  urlReq += password;
+  // urlReq += "&";
+  // urlReq += "deviceId=";
+  // urlReq += deviceId;
+
+  $.when( $.ajax( urlReq ) ).then(function( data, textStatus, jqXHR ) {
+    if (data) {
+      localStorage.setItem('myPoliUser', data.token);
+      window.location.replace("content.html");
+    }
+    else {
+      ons.notification.alert('Datos de usuario incorrectos.');
+    }
+  });
+
 };
