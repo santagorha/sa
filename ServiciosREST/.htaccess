@@ -1,0 +1,5 @@
+	Options +FollowSymLinks -MultiViews
+
+	RewriteEngine on
+
+	RewriteRule ^([^/]+) login.php?peticion=$1 [L,QSA]
