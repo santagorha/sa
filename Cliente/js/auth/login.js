@@ -1,10 +1,10 @@
 var myUser = localStorage.getItem("myPoliUser");
 
-document.addEventListener('init', function(event) {
-  if (myUser) {
-    window.location.replace("content.html");
-  }
-});
+// document.addEventListener('init', function(event) {
+//   if (myUser) {
+//     window.location.replace("content.html");
+//   }
+// });
 
 // document.addEventListener("deviceready", onDeviceReady, false);
 // function onDeviceReady() {
@@ -28,6 +28,7 @@ var authUser = function() {
 
   $.when( $.ajax( urlReq ) ).then(function( data, textStatus, jqXHR ) {
     if (data) {
+      console.log(data.token);
       localStorage.setItem('myPoliUser', data.token);
       window.location.replace("content.html");
     }
