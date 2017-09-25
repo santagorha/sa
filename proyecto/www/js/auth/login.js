@@ -1,41 +1,42 @@
 var myUser = localStorage.getItem("myPoliUser");
 
-document.addEventListener('init', function(event) {
+//reemplaza el init, porque hacen conflicto
+document.addEventListener('deviceready', function(event) {
+  alert(device.uuid);
   if (myUser) {
     window.location.replace("content.html");
   }
 });
-
-document.addEventListener("deviceready", onDeviceReady, false);
-var onDeviceReady = function() {
-  ons.notification.toast(device.uuid);
-};
 
 var authUser = function() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
-  var urlReq = "http://192.168.1.122:8080/random?";
+  var urlReq = "http://110.0.2.2:8080/random?";
   urlReq += "username=";
   urlReq += username;
   urlReq += "&";
   urlReq += "password=";
   urlReq += password;
-  // urlReq += "&";
-  // urlReq += "deviceId=";
-  // urlReq += deviceId;
+  urlReq += "&";
+  urlReq += "uuid=";
+  urlReq += "device.uuid";
 
+  //falta control cuando no hay servicio disponible
   $.when($.ajax({
     url: urlReq,
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
   })).then(function( data, textStatus, jqXHR ) {
-    if (data) {
-      console.log(data);
+    if (data.token) {
+      console.log(data.token);
       localStorage.setItem('myPoliUser', data.token);
       window.location.replace("content.html");
+    }
+    else {
+      ons.notification.alert('Constraseña no valida');
     }
   });
 };
