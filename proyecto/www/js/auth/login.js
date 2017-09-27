@@ -24,12 +24,13 @@ var authUser = function() {
   urlReq += "device.uuid";
 
   //falta control cuando no hay servicio disponible
-  $.when($.ajax({
+  $.ajax({
     url: urlReq,
+    timeout: 5000,
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  })).then(function( data, textStatus, jqXHR ) {
+  }).then(function( data, textStatus, jqXHR ) {
     if (data.token) {
       console.log(data.token);
       localStorage.setItem('myPoliUser', data.token);
