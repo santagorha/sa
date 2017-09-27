@@ -23,7 +23,6 @@ var authUser = function() {
   urlReq += "uuid=";
   urlReq += "device.uuid";
 
-  //falta control cuando no hay servicio disponible
   $.ajax({
     url: urlReq,
     timeout: 5000,
