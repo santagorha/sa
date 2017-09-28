@@ -1,0 +1,80 @@
+<ons-page id="home">
+
+    <head>
+        <script>
+            window.fn = {};
+    window.fn.open = function() {
+      var menu = document.getElementById('menu');
+      menu.open();
+    };
+    window.fn.load = function(page) {
+      var content = document.getElementById('content');
+      var menu = document.getElementById('menu');
+      content
+        .load(page)
+        .then(menu.close.bind(menu));
+    };
+    window.fn.close = function() {
+      menu.close();
+    };
+        </script>
+    </head>
+
+    <ons-splitter><!--Menú desplegable-->
+  <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <div style="margin-top:50px"></div>
+        <ons-list-item onclick="fn.load('user.html')" tappable style="background:#10305c; color:white">
+          <div class="profile-pic">
+            <img src="https://maxcdn.icons8.com/Share/icon/Users//user_male_circle_filled1600.png" style="width: 100px; height: 100px;" class="center"/>
+          </div>
+          <div class="title">Nombre Apellido</div>
+          <div class="content">Código Estudiante</div>
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('saved.html')" tappable style="background:#10305c; color:white">
+          Eventos Guardados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('reserved.html')" tappable style="background:#10305c; color:white">
+          Eventos Reservados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('settings.html')" tappable style="background:#10305c; color:white">
+          Configuraciones
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable style="background:#10305c; color:white">
+          Acerca De...
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side><ons-splitter-content id="content" page="index.html"></ons-splitter-content>
+</ons-splitter>
+  <div style="margin-top:50px"></div>
+  </div>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento1</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento2</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento3</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento4</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento5</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
+      <div class="title">Evento6</div>
+      <div class="content">Simple "pull to refresh" functionality to update data.</div>
+  </ons-card>
+  
+  
+  
+</ons-page>
