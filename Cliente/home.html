@@ -1,0 +1,108 @@
+<<<<<<< HEAD
+<ons-splitter><!--Menú desplegable-->
+  <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <ons-list-item onclick="fn.load('user.html')" tappable>
+          Nombre Apellido
+          Código Estudiante
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('saved.html')" tappable>
+          Eventos Guardados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('reserved.html')" tappable>
+          Eventos Reservados
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('settings.html')" tappable>
+          Configuraciones
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable>
+          About
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side><ons-splitter-content id="content" page="saved.html"></ons-splitter-content>
+</ons-splitter>
+  
+
+
+<ons-page id="home">
+  <ons-toolbar style="background:#0458a0; height:50px"> <!--Barra de presentación-->
+    <div class="center">PoliGran 101</div>
+    <div class="left">
+      <ons-toolbar-button onclick="fn.open()">
+        <ons-icon icon="ion-navicon"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="right">
+      <ons-toolbar-button>
+        <ons-icon icon="md-zoom-in"></ons-icon> 
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  
+  
+  
+  
+  
+  
+  <ons-tabbar position="down"><!--Barra de iconos-->
+    <ons-tab page="home.html" label="Próximos" spin icon="md-spinner" badge="99" active>
+    </ons-tab>
+    <ons-tab page="saved.html" label="Guardados" icon="fa-file" active-icon="md-face">
+    </ons-tab>
+    <ons-tab page="reserved.html" label="Reservados" icon="ion-calendar" active-icon="md-face">
+    </ons-tab>
+  </ons-tabbar>
+  
+</ons-page>
+
+  
+<template id="saved.html">
+  <ons-page id="saved">
+    <p style="text-align: center;">
+      Aquí los eventos guardados.
+    </p>
+  </ons-page>
+</template>
+
+<template id="reserved.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí los eventos reservados.
+    </p>
+  </ons-page>
+</template>
+
+<template id="user.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí el perfil del usuario.
+    </p>
+  </ons-page>
+</template>
+
+<template id="settings.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí va las configuraciones de la APP.
+    </p>
+  </ons-page>
+</template>
+
+<template id="about.html">
+  <ons-page id="reserved">
+    <p style="text-align: center;">
+      Aquí el credito del desarrollo.
+    </p>
+  </ons-page>
+</template>
+
+=======
+<ons-page id="home">
+  <p>
+    FELICITACIONES TE HAS LOGEADO
+  </p>
+  <ons-button id="logout" onclick="logout()">Logout</ons-button>
+</ons-page>
+>>>>>>> 8602ae5b3775ac82f923937323c11b162865a380
