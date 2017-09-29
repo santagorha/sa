@@ -13,7 +13,7 @@ var authUser = function() {
   var password = document.getElementById('password').value;
 
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
-  var urlReq = "http://110.0.2.2:8080/random?";
+  var urlReq = "http://10.0.2.2:8080/random?";
   urlReq += "username=";
   urlReq += username;
   urlReq += "&";
@@ -25,7 +25,7 @@ var authUser = function() {
 
   $.ajax({
     url: urlReq,
-    timeout: 5000,
+    timeout: 3000,
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
