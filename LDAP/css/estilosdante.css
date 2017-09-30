@@ -1,0 +1,22 @@
+header{
+	background:#0458a0;
+	color:white;
+	box-sizing:border-box;
+}
+.navbar{
+	margin-bottom:0;
+}
+
+.nav li ul{
+	display:  none;
+}
+
+.nav li:hover > ul{
+	display:  block;
+}
+
+.jumbotron {
+	background:#10305c;
+	color:white;
+	padding:20px 0;
+}
