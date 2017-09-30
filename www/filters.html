@@ -1,0 +1,97 @@
+<ons-page id="filters">
+
+<p style="text-align: center">
+    <ons-list-header onclick="app.showFromTemplate()">CATEGORIA</ons-list-header>
+    <ons-list-header onclick="app2.showFromTemplate()">FACULTAD</ons-list-header>
+    <ons-list-header onclick="app3.showFromTemplate()">SEDE</ons-list-header>
+  </p>
+
+</ons-page>
+
+<template id="action-sheet1.html">
+  <ons-action-sheet id="sheet1" cancelable title="CATEGORIA">
+   <ons-list-item tappable>
+    <label class="right">
+      <ons-checkbox input-id="check-1"></ons-checkbox>
+    </label>
+    <label for="check-1" class="center">Laboratorios</label>
+    </ons-list-item >
+    
+    <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-2"></ons-checkbox> </label>
+    <label for="check-2" class="center"> Bienestar</label>
+    </ons-list-item>
+    
+     <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-3"></ons-checkbox> </label>
+    <label for="check-3" class="center"> Asesorias</label>
+    </ons-list-item>
+    
+     <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-4"></ons-checkbox> </label>
+    <label for="check-4" class="center"> Actividades</label>
+    </ons-list-item>
+    
+     <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-5"></ons-checkbox> </label>
+    <label for="check-5" class="center"> Semilleros</label>
+    </ons-list-item>
+
+    <ons-action-sheet-button icon="md-close" onclick="app.hideFromTemplate()">Cancel</ons-action-sheet-button>
+  </ons-action-sheet>
+</template>
+<template id="action-sheet2.html">
+  <ons-action-sheet id="sheet2" cancelable title="FACULTAD">
+   <ons-list-item tappable>
+    <label class="right">
+      <ons-checkbox input-id="check-1"></ons-checkbox>
+    </label>
+    <label for="check-1" class="center">FICB</label>
+    </ons-list-item >
+    
+    <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-2"></ons-checkbox> </label>
+    <label for="check-2" class="center"> FMCA</label>
+    </ons-list-item>
+    
+     <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-3"></ons-checkbox> </label>
+    <label for="check-3" class="center"> FCAEC</label>
+    </ons-list-item>
+    
+     <ons-list-item tappable>
+    <label class="right"><ons-checkbox input-id="check-4"></ons-checkbox> </label>
+    <label for="check-4" class="center"> FCS</label>
+    </ons-list-item>
+    <ons-action-sheet-button icon="md-close" onclick="app2.hideFromTemplate()">Cancel</ons-action-sheet-button>
+  </ons-action-sheet>
+</template>
+
+<template id="action-sheet3.html">
+  <ons-action-sheet id="sheet3" cancelable title="SEDE">
+   <p style="text-align: center">
+    <ons-list-header onclick="app4.showFromTemplate()">BOGOTÁ</ons-list-header>
+    <ons-list-header onclick="app5.showFromTemplate()">MEDELLIN</ons-list-header>
+      </p>
+     <ons-action-sheet-button icon="md-close" onclick="app3.hideFromTemplate()">Cancel</ons-action-sheet-button>
+  </ons-action-sheet>
+</template>
+
+<template id="action-sheet4.html">
+    <ons-action-sheet id="sheet4"  cancelable title="Sede Bogotá, Dir: Calle 57 Nº 3-00 Este">
+      <ons-action-sheet-button icon="md-close" onclick="app4.hideFromTemplate()">Cancel</ons-action-sheet-button>
+  </ons-action-sheet>
+</template>
+
+<template id="action-sheet5.html">
+    <ons-action-sheet id="sheet5"  cancelable title="Sede Medellín, Carrera 74 # 52 - 20">
+      <ons-action-sheet-button icon="md-close" onclick="app5.hideFromTemplate()">Cancel</ons-action-sheet-button>
+  </ons-action-sheet>
+</template>
+
+
+
+
+
+    
+</ons-page>

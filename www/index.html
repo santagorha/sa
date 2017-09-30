@@ -6,27 +6,41 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script>
+        window.fn = {};
+window.fn.open = function() {
+    var menu = document.getElementById('menu');
+    menu.open();
+};
+window.fn.load = function(page) {
+    var content = document.getElementById('content');
+    var menu = document.getElementById('menu');
+    content
+    .load(page)
+    .then(menu.close.bind(menu));
+};
+window.fn.close = function() {
+    menu.close();
+};
+
+    </script>
+  
 
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <script>
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-
-    
-
-  </script>
+  
 </head>
 <body>
+
+
 
 <ons-toolbar style="background:#0458a0; height:50px"> <!--Barra de presentación-->
     <div class="center">PoliGran 101</div>
     <div class="left">
-      <ons-toolbar-button onclick="fn.open(); fn.close()">
+      <ons-toolbar-button onclick="fn.open();fn.close();">
         <ons-icon icon="ion-navicon"></ons-icon>
       </ons-toolbar-button>
     </div>
@@ -36,6 +50,13 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
+  
+  
+  
+  
+
+  
+  
     
 <ons-tabbar position="down"><!--Barra de iconos-->
     <ons-tab page="home.html" label="Próximos" spin icon="md-spinner" badge="99" active style="background:#0458a0">

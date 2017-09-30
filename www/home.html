@@ -1,24 +1,27 @@
 <ons-page id="home">
 
-    <head>
-        <script>
-            window.fn = {};
-    window.fn.open = function() {
-      var menu = document.getElementById('menu');
-      menu.open();
-    };
-    window.fn.load = function(page) {
-      var content = document.getElementById('content');
-      var menu = document.getElementById('menu');
-      content
-        .load(page)
-        .then(menu.close.bind(menu));
-    };
-    window.fn.close = function() {
-      menu.close();
-    };
-        </script>
-    </head>
+<head>
+    
+    <script>
+        window.fn = {};
+window.fn.open = function() {
+    var menu = document.getElementById('menu');
+    menu.open();
+};
+window.fn.load = function(page) {
+    var content = document.getElementById('content');
+    var menu = document.getElementById('menu');
+    content
+    .load(page)
+    .then(menu.close.bind(menu));
+};
+window.fn.close = function() {
+    menu.close();
+};
+
+    </script>
+    
+</head>
 
     <ons-splitter><!--Menú desplegable-->
   <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
@@ -48,8 +51,33 @@
     </ons-page>
   </ons-splitter-side><ons-splitter-content id="content" page="index.html"></ons-splitter-content>
 </ons-splitter>
+
+
+    
   <div style="margin-top:50px"></div>
   </div>
+  
+  <!-- Filtros -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- Filtros -->
+  
+  
+  
+  <ons-card style="text-align: center">
+    <ons-list-item onclick="app.showFromTemplate()">CATEGORIA</ons-list-item>
+    <ons-list-item onclick="app2.showFromTemplate()">FACULTAD</ons-list-item>
+    <ons-list-item onclick="app3.showFromTemplate()">SEDE</ons-list-item>
+  </ons-card>
+  
   <ons-card onclick="fn.pushPage({'id': 'pullHook.html', 'title': 'PullHook'})">
       <div class="title">Evento1</div>
       <div class="content">Simple "pull to refresh" functionality to update data.</div>
