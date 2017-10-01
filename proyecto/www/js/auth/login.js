@@ -2,7 +2,6 @@ var myUser = localStorage.getItem("myPoliUser");
 
 //reemplaza el init, porque hacen conflicto
 document.addEventListener('deviceready', function(event) {
-  alert(device.uuid);
   if (myUser) {
     window.location.replace("content.html");
   }
