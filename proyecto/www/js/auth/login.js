@@ -13,6 +13,7 @@ var authUser = function() {
 
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
   var urlReq = "http://10.0.2.2:8080/random?";
+  urlReq = "http://192.168.0.13:8080/random?";
   urlReq += "username=";
   urlReq += username;
   urlReq += "&";
