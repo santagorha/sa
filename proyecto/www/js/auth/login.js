@@ -21,7 +21,7 @@ var authUser = function() {
   urlReq += password;
   urlReq += "&";
   urlReq += "uuid=";
-  urlReq += "device.uuid";
+  urlReq += device.uuid;
 
   $.ajax({
     url: urlReq,
