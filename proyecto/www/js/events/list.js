@@ -14,9 +14,10 @@ var toggleFilter = function(filtro) {
 var createEventos = function(node, params) {
   var itemNode = document.getElementById(node);
   var htmlElement = "";
+
   for(i in params) {
     htmlElement += "<ons-list-item>\n";
-    htmlElement += params[i].nombre + params[i].categoria + params[i].lugar + params[i].diahora + "\n";
+    htmlElement += params[i].nombre + params[i].categoria + params[i].lugar + params[i].fechahora + "\n";
     htmlElement += "</ons-list-item>\n";
   }
 
@@ -26,6 +27,7 @@ var createEventos = function(node, params) {
 var createFiltros = function(node, params) {
   var itemNode = document.getElementById(node);
   var htmlElement = "";
+
   for(i in params) {
     htmlElement += "<ons-list-item>\n";
     htmlElement += "<ons-checkbox value=\"" + params[i].key + "\">\n";
