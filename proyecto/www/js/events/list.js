@@ -1,8 +1,6 @@
 document.addEventListener('deviceready', function(event) {
-  createEventos("list-eventos", eventos.lista);
-  createFiltros("filter-lugar", itemPerFilter.lugar);
-  createFiltros("filter-categoria", itemPerFilter.categoria);
-  createFiltros("filter-facultad", itemPerFilter.facultad);
+  getEventos();
+  getFiltros();
 
   $(".filter-home").toggle();
 });
@@ -11,8 +9,38 @@ var toggleFilter = function(filtro) {
   $(filtro).toggle("slow");
 };
 
-var createEventos = function(node, params) {
-  var itemNode = document.getElementById(node);
+var getEventos() {
+  var url = "";
+  $.ajax({
+    url: urlReq,
+    timeout: 3000,
+    method: 'POST',
+    error: function() {
+      ons.notification.alert('Problemas con la conexión');
+    }
+  }).then(function(data, textStatus, jqXHR) {
+    createEventos(data.eventos);
+  });
+};
+
+var getFiltros() {
+  var url = "";
+  $.ajax({
+    url: urlReq,
+    timeout: 3000,
+    method: 'POST',
+    error: function() {
+      ons.notification.alert('Problemas con la conexión');
+    }
+  }).then(function(data, textStatus, jqXHR) {
+    createFiltros("filter-lugar", data.lugar);
+    createFiltros("filter-categoria", data.categoria);
+    createFiltros("filter-facultad", data.facultad);
+  });
+};
+
+var createEventos = function(params) {
+  var itemNode = document.getElementById("list-eventos");
   var htmlElement = "";
 
   for(i in params) {
