@@ -4,7 +4,6 @@ var myUser = localStorage.getItem("myPoliUser");
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
   if (!myUser) {
-    window.location.replace("content.html");
+    window.location.replace("index.html");
   }
-
 };

@@ -29,7 +29,7 @@ var authUser = function() {
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  }).then(function( data, textStatus, jqXHR ) {
+  }).then(function(data, textStatus, jqXHR) {
     if (data.token) {
       console.log(data.token);
       localStorage.setItem('myPoliUser', data.token);
