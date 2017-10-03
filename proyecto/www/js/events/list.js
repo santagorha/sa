@@ -4,7 +4,7 @@ document.addEventListener('deviceready', function(event) {
   createFiltros("filter-categoria", itemPerFilter.categoria);
   createFiltros("filter-facultad", itemPerFilter.facultad);
 
-  $(".filterHome").toggle();
+  $(".filter-home").toggle();
 });
 
 var toggleFilter = function(filtro) {
@@ -13,19 +13,19 @@ var toggleFilter = function(filtro) {
 
 var createEventos = function(node, params) {
   var itemNode = document.getElementById(node);
-  var htmlElements = "";
+  var htmlElement = "";
   for(i in params) {
     htmlElement += "<ons-list-item>\n";
     htmlElement += params[i].nombre + params[i].categoria + params[i].lugar + params[i].diahora + "\n";
     htmlElement += "</ons-list-item>\n";
   }
-
+  alert(htmlElement);
   itemNode.innerHTML = htmlElement;
 };
 
 var createFiltros = function(node, params) {
   var itemNode = document.getElementById(node);
-  var htmlElements = "";
+  var htmlElement = "";
   for(i in params) {
     htmlElement += "<ons-list-item>\n";
     htmlElement += "<ons-checkbox value=\"" + params[i].key + "\">\n";
@@ -33,6 +33,6 @@ var createFiltros = function(node, params) {
     htmlElement += "</ons-checkbox>\n";
     htmlElement += "</ons-list-item>\n";
   }
-
+  alert(htmlElement);
   itemNode.innerHTML = htmlElement;
 };
