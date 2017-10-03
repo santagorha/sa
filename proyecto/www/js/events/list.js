@@ -19,7 +19,7 @@ var createEventos = function(node, params) {
     htmlElement += params[i].nombre + params[i].categoria + params[i].lugar + params[i].diahora + "\n";
     htmlElement += "</ons-list-item>\n";
   }
-  alert(htmlElement);
+
   itemNode.innerHTML = htmlElement;
 };
 
@@ -33,6 +33,6 @@ var createFiltros = function(node, params) {
     htmlElement += "</ons-checkbox>\n";
     htmlElement += "</ons-list-item>\n";
   }
-  alert(htmlElement);
+
   itemNode.innerHTML = htmlElement;
 };
