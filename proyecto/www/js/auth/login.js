@@ -13,7 +13,7 @@ var authUser = function() {
 
   //Toca buscar una forma segura ya que hacer esta comparación acá no lo es
   var urlReq = "http://10.0.2.2:8080/random?";
-  urlReq = "http://192.168.0.13:8080/random?";
+  //urlReq = "http://192.168.0.13:8080/random?";
   urlReq += "username=";
   urlReq += username;
   urlReq += "&";
@@ -21,17 +21,17 @@ var authUser = function() {
   urlReq += password;
   urlReq += "&";
   urlReq += "uuid=";
-  urlReq += "device.uuid";
+  urlReq += device.uuid;
 
   $.ajax({
     url: urlReq,
     timeout: 3000,
+    method: 'POST',
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  }).then(function(data, textStatus, jqXHR) {
+  }).done(function(data, textStatus, jqXHR) {
     if (data.token) {
-      console.log(data.token);
       localStorage.setItem('myPoliUser', data.token);
       window.location.replace("content.html");
     }
