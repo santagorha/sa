@@ -1,6 +1,6 @@
 document.addEventListener('deviceready', function(event) {
-  getEventos();
   getFiltros();
+  getEventos();
 
   $(".filter-home").toggle();
 });
@@ -9,8 +9,8 @@ var toggleFilter = function(filtro) {
   $(filtro).toggle("slow");
 };
 
-var getEventos() {
-  var url = "";
+var getEventos = function() {
+  var urlReq = "http://10.0.2.2:8080/eventos";
   $.ajax({
     url: urlReq,
     timeout: 3000,
@@ -18,21 +18,21 @@ var getEventos() {
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  }).then(function(data, textStatus, jqXHR) {
+  }).done(function(data, textStatus, jqXHR) {
     createEventos(data.eventos);
   });
 };
 
-var getFiltros() {
-  var url = "";
+var getFiltros = function() {
+  var urlReq = "http://10.0.2.2:8080/filtro";
   $.ajax({
     url: urlReq,
-    timeout: 3000,
+    timeout: 1000,
     method: 'POST',
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  }).then(function(data, textStatus, jqXHR) {
+  }).done(function(data, textStatus, jqXHR) {
     createFiltros("filter-lugar", data.lugar);
     createFiltros("filter-categoria", data.categoria);
     createFiltros("filter-facultad", data.facultad);
@@ -44,9 +44,9 @@ var createEventos = function(params) {
   var htmlElement = "";
 
   for(i in params) {
-    htmlElement += "<ons-list-item>\n";
+    htmlElement += "<ons-card>\n";
     htmlElement += params[i].nombre + params[i].categoria + params[i].lugar + params[i].fechahora + "\n";
-    htmlElement += "</ons-list-item>\n";
+    htmlElement += "</ons-card>\n";
   }
 
   itemNode.innerHTML = htmlElement;

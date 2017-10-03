@@ -30,7 +30,7 @@ var authUser = function() {
     error: function() {
       ons.notification.alert('Problemas con la conexión');
     }
-  }).then(function(data, textStatus, jqXHR) {
+  }).done(function(data, textStatus, jqXHR) {
     if (data.token) {
       localStorage.setItem('myPoliUser', data.token);
       window.location.replace("content.html");
