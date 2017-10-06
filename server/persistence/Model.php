@@ -11,15 +11,26 @@ class Model extends DbModel {
 
     function __construct() {
         parent::__construct();
-        $this->id = 0;
+        $this->id = array();
     }
 
     function get() {
-        if ($this->id === 0) {
+        if (empty($this->id)) {
             return $this->getQuery('SELECT * FROM ' . $this->entity);
         } else {
             $query = 'SELECT * FROM ' . $this->entity .
-                    ' WHERE Id = \'' . $this->id . '\'';
+                    ' WHERE';
+            $keys = array_keys($this->id);
+            $values = array_values($this->id);
+            $keysLength = count($keys);
+            for ($i = 0; $i < $keysLength; $i++) {
+                $query .= ' ' . $keys[$i] . ' = \'' . $values[$i] . '\'';
+                if ($keysLength - 1 !== $i) {
+                    $query .= ' AND';
+                } else {
+                    $query .= ';';
+                }
+            }
             return $this->getQuery($query);
         }
     }
@@ -47,13 +58,35 @@ class Model extends DbModel {
                 $query .= ',';
             }
         }
-        $query .= ' WHERE Id = \'' . $this->id . '\';';
+        $query .= ' WHERE';
+        $keys = array_keys($this->id);
+        $values = array_values($this->id);
+        $keysLength = count($keys);
+        for ($i = 0; $i < $keysLength; $i++) {
+            $query .= ' ' . $keys[$i] . ' = \'' . $values[$i] . '\'';
+            if ($keysLength - 1 !== $i) {
+                $query .= ' AND';
+            } else {
+                $query .= ';';
+            }
+        }
         return $this->setQuery($query);
     }
 
     function delete() {
         $query = 'DELETE FROM ' . $this->entity .
-                ' WHERE Id = \'' . $this->id . '\';';
+                ' WHERE';
+        $keys = array_keys($this->id);
+        $values = array_values($this->id);
+        $keysLength = count($keys);
+        for ($i = 0; $i < $keysLength; $i++) {
+            $query .= ' ' . $keys[$i] . ' = \'' . $values[$i] . '\'';
+            if ($keysLength - 1 !== $i) {
+                $query .= ' AND';
+            } else {
+                $query .= ';';
+            }
+        }
         return $this->setQuery($query);
     }
 
