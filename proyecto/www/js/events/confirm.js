@@ -55,7 +55,7 @@ $.ajax({
   }).done(function(data, textStatus, jqXHR) {
 	if(data > -1){
 		ons.notification.alert("La cantidad de asistentes confirmados es de: " + data);
-		document.querySelector('#myNavigator').pushPage('page1.html');
+		document.querySelector('#myNavigator').popPage();
 	} else {
 		ons.notification.alert("ERROR");
 	}
