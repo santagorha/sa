@@ -9,7 +9,7 @@ $conexion =  sqlite_open('appeventos.db');
 
 //Creacion de la consulta
 $id_usuario = 1;
-$consulta = "SELECT * FROM EVENTO_USUARIO WHERE id_usuario = " . $id_usuario . " AND MARCA = 1;";
+$consulta = "SELECT * FROM EVENTO_USUARIO WHERE id_usuario = " . $id_usuario . " AND MARCA_FAVORITO = 1;";
 
 //Ejecucion de la consulta 
 $resultado =  sqlite_query($conexion, $consulta);
