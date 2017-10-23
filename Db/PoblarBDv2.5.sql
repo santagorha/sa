@@ -35,5 +35,4 @@ INSERT INTO EVENTO_USUARIO VALUES
 (2, 1, 3, 1, 'ASISTENTE', 1), 
 (3, 2, 1, 0, 'ASISTENTE', 1), 
 (4, 2, 2, 1, 'ASISTENTE', 0), 
-(5, 3, 1, 1, 'ASISTENTE', 1)
-;
+(5, 3, 1, 1, 'ASISTENTE', 1);
