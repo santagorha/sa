@@ -10,7 +10,11 @@ if(!$conexion){
 //se prepara la peticion
 $sql= "CREATE DATABASE APPEVENTOS";
 //se ejecuta la peticion
-mysql_query($sql, $conexion);
+if(mysql_query($sql, $conexion)){
+	echo "Se ha creado la base de datos";
+}else{
+echo "No se ha podido crear la base de datos por el siguiente error: ". mysql_error();
+}
 // se cierra la conexion
 mysql_close($conexion);
 
