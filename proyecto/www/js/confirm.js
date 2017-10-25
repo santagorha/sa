@@ -10,7 +10,7 @@ var getParticipantes = function(eventId) {
     data: {
       evento: eventId
     },
-    timeout: 1000,
+    timeout: 3000,
     method: "POST",
     error: function() {
       ons.notification.alert("Problemas con la conexión");
@@ -25,16 +25,15 @@ var createParticipantes = function(params) {
   var itemNode = document.getElementById("list-participantes");
   var htmlElement = "";
   for(let user of params) {
-    htmlElement += "<ons-list-item>\n";
-    htmlElement +=  "<div class=\"center\">";
-    htmlElement +=  user.NOMBRE_USUARIO;
-    htmlElement += "</div>";
-    htmlElement +=  "<div class=\"right\">";
-    htmlElement += "<ons-switch class=\"participante-check\" value=\""+ user.ID_EVENTO_USUARIO +"\"></ons-switch>";
-    htmlElement += "</div>";
-    htmlElement += "</ons-list-item>\n";
-  }
+    htmlElement += `<ons-list-item>\n`;
+    htmlElement += `<div class="center"> ${user.NOMBRE_USUARIO} </div>\n`;
+    htmlElement +=  `<div class="right">\n`;
+    htmlElement += `<ons-switch class="participante-check" value="${user.ID_EVENTO_USUARIO}">\n</ons-switch>\n`;
+    htmlElement += `</div>\n`;
+    htmlElement += `</ons-list-item>\n`;
 
+
+  }
   itemNode.innerHTML = htmlElement;
 };
 
@@ -49,7 +48,7 @@ var confirmParticipantes = function () {
     data: {
       eventos: checkedValues.toString()
     },
-    timeout: 1000,
+    timeout: 3000,
     method: "POST",
     error: function() {
       ons.notification.alert("Problemas con la conexión");
