@@ -24,13 +24,13 @@ var getParticipantes = function(eventId) {
 var createParticipantes = function(params) {
   var itemNode = document.getElementById("list-participantes");
   var htmlElement = "";
-  for(i in params) {
+  for(let user of params) {
     htmlElement += "<ons-list-item>\n";
     htmlElement +=  "<div class=\"center\">";
-    htmlElement +=  params[i].NOMBRE_USUARIO;
+    htmlElement +=  user.NOMBRE_USUARIO;
     htmlElement += "</div>";
     htmlElement +=  "<div class=\"right\">";
-    htmlElement += "<ons-switch class=\"participante-check\" value=\""+ params[i].ID_EVENTO_USUARIO +"\"></ons-switch>";
+    htmlElement += "<ons-switch class=\"participante-check\" value=\""+ user.ID_EVENTO_USUARIO +"\"></ons-switch>";
     htmlElement += "</div>";
     htmlElement += "</ons-list-item>\n";
   }
