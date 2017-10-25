@@ -42,6 +42,26 @@ $app->post('/user', function () use ($app) {
     response($response['codeStatus'], $response);
 });
 
+$app->post('/usuariosEvento', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'evento' => $app->request->post('evento')
+  );
+  $controllerUsersEvent = new ControllerUsersEvent($model);
+  $response = $controllerUsersEvent->getUsersPerEvent($data);
+  response($response['codeStatus'], $response);
+});
+
+$app->post('/confirmarAsistencia', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'eventos' => $app->request->post('eventos')
+  );
+  $controllerUsersEvent = new ControllerUsersEvent($model);
+  $response = $controllerUsersEvent->setAsistencia($data);
+  response($response['codeStatus'], $response);
+});
+
 function response($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     $app->status($status_code);
