@@ -31,8 +31,8 @@ INSERT INTO LOG VALUES
 (2, 3, 3, '2017/7/10', 'EDIT', 'EDICION DE EVENTO' 	),
 (3, 2, 2, '2017/11/1', 'LOGOUT', 'SALIDA DE APP' );
 INSERT INTO EVENTO_USUARIO VALUES
-(1, 4, 1, 0, 'ASISTENTE', 0),
-(2, 1, 3, 1, 'ASISTENTE', 1), 
-(3, 2, 1, 0, 'ASISTENTE', 1), 
-(4, 2, 2, 1, 'ASISTENTE', 0), 
-(5, 3, 1, 1, 'ASISTENTE', 1);
+(1, 4, 1, 0, 'ASISTENTE', 0, 1),
+(2, 1, 3, 1, 'ASISTENTE', 1, 1), 
+(3, 2, 1, 0, 'ASISTENTE', 1, 0), 
+(4, 2, 2, 1, 'ASISTENTE', 0,  0), 
+(5, 3, 1, 1, 'ASISTENTE', 1, 1);
