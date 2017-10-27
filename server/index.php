@@ -12,6 +12,7 @@ require './persistence/DbModel.php';
 require './persistence/Model.php';
 require './api/controllers/ControllerSession.php';
 require './api/controllers/ControllerUser.php';
+require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
@@ -59,6 +60,17 @@ $app->post('/confirmarAsistencia', function () use ($app) {
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->setAsistencia($data);
+  response($response['codeStatus'], $response);
+});
+
+//David Gualteros
+$app->get('/eventosDeUsuario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'user' => $app->request->get('user')
+  );
+  $controllerUsersEvent = new ControllerHistoryEvent($model);
+  $response = $controllerHistoryEvent->getHistoryEvent($data);
   response($response['codeStatus'], $response);
 });
 
