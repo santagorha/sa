@@ -74,6 +74,17 @@ $app->get('/eventosDeUsuario', function () use ($app) {
   response($response['codeStatus'], $response);
 });
 
+//David Gualteros
+$app->get('/creditosDeUsuario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'user' => $app->request->get('user')
+  );
+  $controllerUserCredits = new ControllerUserCredits($model);
+  $response = $controllerUserCredits->getUserCredits($data);
+  response($response['codeStatus'], $response);
+});
+
 function response($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     $app->status($status_code);
