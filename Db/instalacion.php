@@ -8,8 +8,7 @@ if(!$conexion){
 	die('No se ha podido conectar: '.mysql_error());
 }
 //se prepara la peticion
-$sql= "
-CREATE DATABASE APPEVENTOS";
+$sql= "CREATE DATABASE APPEVENTOS";
 //se ejecuta la peticion
 if(mysql_query($sql, $conexion)){
 	echo "Se ha creado la base de datos";
