@@ -58,7 +58,8 @@ $app->get('/usuariosEvento', function () use ($app) {
 $app->post('/asistencia', function () use ($app) {
   $model = new Model();
   $data = array(
-    'eventos' => $app->request->post('eventos')
+    'eventos' => $app->request->post('eventos'),
+    'evento' => $app->request->post('evento')
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->setAsistencia($data);
