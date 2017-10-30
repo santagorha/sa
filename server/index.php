@@ -13,6 +13,8 @@ require './persistence/Model.php';
 require './api/controllers/ControllerSession.php';
 require './api/controllers/ControllerUser.php';
 require './api/controllers/ControllerUsersEvent.php';
+require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
+require './api/controllers/ControllerUserCredits.php'; //David Gualteros
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
@@ -71,6 +73,29 @@ $app->post('/usuarioNuevoEvento', function () use ($app) {
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->getUsuarioNuevo($data);
+  response($response['codeStatus'], $response);
+});
+
+//David Gualteros
+$app->get('/eventosDeUsuario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'user' => $app->request->get('user')
+  );
+  $controllerHystoryEvent = new ControllerHistoryEvent($model);
+  $response = $controllerHistoryEvent->getHistoryEvent($data);
+  response($response['codeStatus'], $response);
+});
+
+//David Gualteros
+$app->get('/creditosDeUsuario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'user' => $app->request->get('user')
+  );
+  $controllerUserCredits = new ControllerUserCredits($model);
+  $response = $controllerUserCredits->getUserCredits($data);
+
   response($response['codeStatus'], $response);
 });
 
