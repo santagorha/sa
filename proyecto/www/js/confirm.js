@@ -5,6 +5,7 @@ var goParticipants = function() {
     document.querySelector("#myNavigator").pushPage("participantes.html");
     getParticipantes(eventId);
 };
+
 /**
  * Método que consulta del servicio los participantes a un evento
  * Posterior a su uso llama al método encargado de crear la visualización de los mismos
@@ -23,13 +24,13 @@ var getParticipantes = function(eventId) {
         createParticipantes(data.message);
     });
 };
+
 /**
  * Método que genera la visualización de participantes al evento
  *
  * @param {Object} params - Objeto retornado por el servicio que contiene la información de los participantes para visualizar
  */
 var createParticipantes = function(params) {
-<<<<<<< HEAD
   var itemNode = document.getElementById("list-participantes");
   var htmlElement = "";
   for (let user of params) {
@@ -47,19 +48,6 @@ var createParticipantes = function(params) {
     htmlElement += `</ons-list-item>\n`;
   }
   itemNode.innerHTML = htmlElement;
-=======
-    var itemNode = document.getElementById("list-participantes");
-    var htmlElement = "";
-    for (let user of params) {
-        htmlElement += `<ons-list-item>\n`;
-        htmlElement += `<div class="center"> ${user.NOMBRE_USUARIO} </div>\n`;
-        htmlElement += `<div class="right">\n`;
-        htmlElement += `<ons-switch class="participante-check" value="${user.ID_EVENTO_USUARIO}">\n</ons-switch>\n`;
-        htmlElement += `</div>\n`;
-        htmlElement += `</ons-list-item>\n`;
-    }
-    itemNode.innerHTML = htmlElement;
->>>>>>> 2d2a6329486139c5843d45742a806d51153a730d
 };
 
 /**
@@ -69,7 +57,7 @@ var confirmParticipantes = function() {
     var checkedValues = $(".participante-check :checked").map(function() {
         return this.value;
     }).get();
-  
+
     $.ajax({
         url: URL_CONFIRM_EVENT_SERVICE,
         data: {
@@ -86,6 +74,7 @@ var confirmParticipantes = function() {
         }
     });
 };
+
 /**
  * Método que agrega a un usuario no inscritó al evento
  * Posterior a la correcta creación se vuelven a cargar los usuario
