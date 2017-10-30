@@ -23,10 +23,19 @@ class ControllerUsersEvent {
 
   public function setAsistencia($data) {
     $eventIds = $data["eventos"];
-
-    $query = "UPDATE EVENTO_USUARIO SET ASISTIDO = TRUE WHERE ID_EVENTO_USUARIO IN ({$eventIds})";
+    $queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE";
     $model = new Model();
-    $result = $model->setQuery($query);
+    $resultUncheck = "NO USERS";
+    if(!empty($eventIds)) {
+      $queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = TRUE WHERE ID_EVENTO_USUARIO IN ({$eventIds})";
+      $queryUncheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE WHERE ID_EVENTO_USUARIO NOT IN ({$eventIds})";
+      $resultUncheck = $model->setQuery($queryUncheck);
+    }
+    $resultCheck = $model->setQuery($queryCheck);
+    $result = array(
+      "resutlCheck" => $resultCheck,
+      "resutlUncheck" => $resultUncheck
+    );
     $response = array(
       "codeStatus" => OK,
       "message" => $result
@@ -38,7 +47,6 @@ class ControllerUsersEvent {
     $userId = $data["usuario"];
     $eventId = $data["evento"];
     $response = array();
-
     $ds = ldap_connect(HOST_LDAP, PORT_LDAP);
     ldap_set_option ($ds, LDAP_OPT_REFERRALS, 0);
     ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
@@ -68,6 +76,5 @@ class ControllerUsersEvent {
         "codeStatus" => INTERNAL_SERVER_ERROR
       );
     }
-
   }
 }

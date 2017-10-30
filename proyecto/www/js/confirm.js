@@ -33,11 +33,17 @@ var getParticipantes = function(eventId) {
 var createParticipantes = function(params) {
   var itemNode = document.getElementById("list-participantes");
   var htmlElement = "";
-  for(let user of params) {
+  for (let user of params) {
+    var checkParticipante = "";
+    if(user.ASISTIDO == 1) {
+      checkParticipante = " checked";
+    }
+
     htmlElement += `<ons-list-item>\n`;
     htmlElement += `<div class="center"> ${user.NOMBRE_USUARIO} </div>\n`;
-    htmlElement +=  `<div class="right">\n`;
-    htmlElement += `<ons-switch class="participante-check" value="${user.ID_EVENTO_USUARIO}">\n</ons-switch>\n`;
+    htmlElement += `<div class="right">\n`;
+    htmlElement += `<ons-switch ${checkParticipante} class="participante-check" value="${user.ID_EVENTO_USUARIO}">\n`;
+    htmlElement += `</ons-switch>\n`;
     htmlElement += `</div>\n`;
     htmlElement += `</ons-list-item>\n`;
   }
