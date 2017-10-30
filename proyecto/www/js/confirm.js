@@ -1,18 +1,24 @@
 /**
+ * Event listener encargado de imprimir los participantes al evento
+ */
+document.addEventListener('show', function(event) {
+  if (event.target.matches('#participantes')) {
+    getParticipantes();
+  }
+}, false);
+
+/**
  * Método de transporte a la siguiente pantalla
  */
 var goParticipants = function() {
     document.querySelector("#myNavigator").pushPage("participantes.html");
-    getParticipantes(eventId);
 };
 
 /**
  * Método que consulta del servicio los participantes a un evento
  * Posterior a su uso llama al método encargado de crear la visualización de los mismos
- *
- * @param {Integer} eventId - Id del evento
  */
-var getParticipantes = function(eventId) {
+var getParticipantes = function() {
     $.ajax({
         url: URL_USERS_EVENT_SERVICE,
         data: {
@@ -23,31 +29,32 @@ var getParticipantes = function(eventId) {
     }).then(function(data, textStatus, jqXHR) {
         createParticipantes(data.message);
     });
-};
 
+};
 /**
  * Método que genera la visualización de participantes al evento
  *
  * @param {Object} params - Objeto retornado por el servicio que contiene la información de los participantes para visualizar
  */
 var createParticipantes = function(params) {
-  var itemNode = document.getElementById("list-participantes");
-  var htmlElement = "";
-  for (let user of params) {
-    var checkParticipante = "";
-    if(user.ASISTIDO == 1) {
-      checkParticipante = " checked";
-    }
+    var itemNode = document.getElementById("list-participantes");
+    var htmlElement = "";
+    for (let user of params) {
+        var checkParticipante = "";
+        if(user.ASISTIDO == 1) {
+            checkParticipante = " checked";
+        }
 
-    htmlElement += `<ons-list-item>\n`;
-    htmlElement += `<div class="center"> ${user.NOMBRE_USUARIO} </div>\n`;
-    htmlElement += `<div class="right">\n`;
-    htmlElement += `<ons-switch ${checkParticipante} class="participante-check" value="${user.ID_EVENTO_USUARIO}">\n`;
-    htmlElement += `</ons-switch>\n`;
-    htmlElement += `</div>\n`;
-    htmlElement += `</ons-list-item>\n`;
-  }
-  itemNode.innerHTML = htmlElement;
+        htmlElement += `<ons-list-item tappable modifier="nodivider">\n`;
+        htmlElement += `<label for="userEvent-${user.ID_EVENTO_USUARIO}" class="center"> ${user.NOMBRE_USUARIO} </label>\n`;
+        htmlElement += `<div class="left">\n`;
+        htmlElement += `<ons-checkbox modifier="noborder" ${checkParticipante} class="participante-check" input-id="userEvent-${user.ID_EVENTO_USUARIO}" value="${user.ID_EVENTO_USUARIO}">\n`;
+
+        htmlElement += `</ons-checkbox>\n`;
+        htmlElement += `</div>\n`;
+        htmlElement += `</ons-list-item>\n`;
+    }
+    itemNode.innerHTML = htmlElement;
 };
 
 /**
@@ -58,10 +65,12 @@ var confirmParticipantes = function() {
         return this.value;
     }).get();
 
+
     $.ajax({
         url: URL_CONFIRM_EVENT_SERVICE,
         data: {
-            eventos: checkedValues.toString()
+            eventos: checkedValues.toString(),
+            evento: eventId
         },
         timeout: 3000,
         method: "POST"
@@ -74,7 +83,6 @@ var confirmParticipantes = function() {
         }
     });
 };
-
 /**
  * Método que agrega a un usuario no inscritó al evento
  * Posterior a la correcta creación se vuelven a cargar los usuario
