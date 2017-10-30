@@ -21,3 +21,6 @@ define('ENVIRONMENT', 'development');
 define('DC_ONE', 'example');
 define('DC_TWO', 'com');
 define('HOST_LDAP', 'ldap.forumsys.com');
+define('PORT_LDAP', 389);
+define('LDAP_ADMIN', 'cn=read-only-admin,dc=example,dc=com');
+define('LDAP_ADMIN_PASS', 'password');

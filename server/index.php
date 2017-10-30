@@ -12,6 +12,7 @@ require './persistence/DbModel.php';
 require './persistence/Model.php';
 require './api/controllers/ControllerSession.php';
 require './api/controllers/ControllerUser.php';
+require './api/controllers/ControllerUsersEvent.php';
 require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
 require './api/controllers/ControllerUserCredits.php'; //David Gualteros
 require './vendor/Slim/Slim.php';
@@ -44,23 +45,34 @@ $app->post('/user', function () use ($app) {
     response($response['codeStatus'], $response);
 });
 
-$app->post('/usuariosEvento', function () use ($app) {
+$app->get('/usuariosEvento', function () use ($app) {
   $model = new Model();
   $data = array(
-    'evento' => $app->request->post('evento')
+    'evento' => $app->request->get('evento')
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->getUsersPerEvent($data);
   response($response['codeStatus'], $response);
 });
 
-$app->post('/confirmarAsistencia', function () use ($app) {
+$app->post('/asistencia', function () use ($app) {
   $model = new Model();
   $data = array(
     'eventos' => $app->request->post('eventos')
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->setAsistencia($data);
+  response($response['codeStatus'], $response);
+});
+
+$app->post('/usuarioNuevoEvento', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'usuario' => $app->request->post('usuario'),
+    'evento' => $app->request->post('evento')
+  );
+  $controllerUsersEvent = new ControllerUsersEvent($model);
+  $response = $controllerUsersEvent->getUsuarioNuevo($data);
   response($response['codeStatus'], $response);
 });
 
@@ -83,6 +95,7 @@ $app->get('/creditosDeUsuario', function () use ($app) {
   );
   $controllerUserCredits = new ControllerUserCredits($model);
   $response = $controllerUserCredits->getUserCredits($data);
+
   response($response['codeStatus'], $response);
 });
 
