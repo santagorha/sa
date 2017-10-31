@@ -54,6 +54,8 @@ var createParticipantes = function(params) {
         htmlElement += `</ons-list-item>\n`;
     }
     itemNode.innerHTML = htmlElement;
+
+    document.getElementById("confirmar-participantes").disabled = false;
 };
 
 /**
@@ -63,7 +65,6 @@ var confirmParticipantes = function() {
     var checkedValues = $(".participante-check :checked").map(function() {
         return this.value;
     }).get();
-
 
     $.ajax({
         url: URL_CONFIRM_EVENT_SERVICE,
