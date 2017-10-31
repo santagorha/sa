@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<title>PoliGran 101</title>
+<head>
+
+  <!--Julio Rodriguez-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+  <link rel="stylesheet" href="js/lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="js/lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="js/lib/onsenui/css/onsen-css-components.min.css">
+  <link rel="stylesheet" href="js/lib/onsenui/css/styleEventos.css">
+  <link rel="stylesheet" href="js/lib/onsenui/css/main.css">
+
+  <!--Stylos boton favoritos-->
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+  <script src="js/onsenui.min.js"></script>
+  <!--<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>-->
+  <script src="js/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+  <!--JavaScript MenuHome-->
+  <script src="js/menu.js"></script>
+
+  <!--JavaScript Eventos-->
+  <script src="js/EvenFil.js"></script>
+
+  <!--JavaScript Boton FAvotiro-->
+  <script src="js/boton.js"></script>
+
+</head>
+
+<body>
+
+  <div style="background: #e52d27">
+    <ons-if class="search-bar" platform="ios other">
+      <form ng-submit="search(true); blurInput('ios')" class="ng-pristine ng-valid">
+        <ons-input type="search" class="search-input ng-pristine ng-untouched ng-valid ng-empty" input-id="ios-search-input" placeholder="Search for videos in YouTube"
+          ng-model="query">
+          <label class="text-input__container">
+            <input class="text-input" placeholder="Search for videos in YouTube" type="search" id="ios-search-input">
+            <span class="_helper text-input__label">
+              Search for videos in YouTube
+            </span>
+            <span class="input-label">
+            </span>
+          </label>
+        </ons-input>
+      </form>
+    </ons-if>
+  </div>
+
+
+  <!--Barra de presentación Andrés Sierra-->
+  <ons-toolbar class="toolbartop" style="background:#0458a0">
+    <div class="toolbartop-text, center" style="color:#fff" > PoliGran 101</div>
+    
+    <!--Button menu -->
+    <div class="left">
+      <ons-toolbar-button onclick="fn.open();fn.close()">
+        <ons-icon style="color:#fff " icon="ion-navicon"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    
+    <div class="botonbuscar" class="right" ons-toolbar-button>
+      <ons-icon icon="ion-ios-search-strong"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+  <!--Barra de presentación-->
+
+  <!--Menú desplegable Andrés Sierra-->
+  <ons-splitter>
+    <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+      <ons-page>
+        <ons-list style="margin-top:50px; background:#10305c; color:white">
+          <ons-list-item onclick="fn.load('menu.html')" tappable>
+            <div class="profile-pic">
+              <img src="https://maxcdn.icons8.com/Share/icon/User//user_male_circle_filled1600.png" style="width: 100px; height: 100px; margin:8px"
+                class="center">
+            </div>
+          </ons-list-item>
+          <ons-list-item style="color:rgb(244, 249, 253)" class="title">
+            <div>Nombre Apellido</div>
+            <div>Código Estudiante</div>
+            <item onclick="fn.load('saved.html')" tappable> Eventos Guardados </item>
+            <item onclick="fn.load('reserved.html')" tappable>Eventos Reservados </item>
+            <item onclick="fn.load('settings.html')" tappable> Configuraciones </item>
+            <item onclick="fn.load('about.html')" tappable> Acerca De... </item>
+          </ons-list-item>
+          <ons-list-item style="background:#10305c; height: 360px"></ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content" page="index.html"></ons-splitter-content>
+  </ons-splitter>
+  <!--Menú desplegable-->
+
+  <!-- Filtros -->
+  <div style="margin-top:50px"></div>
+  <ons-card>
+    <ons-list-item onclick="tapFilter('#filter-lugar')">Lugar  </ons-list-item>
+    <ons-switch class="filter-home" id="filter-lugar"></ons-switch>
+    
+    <ons-list-item onclick="tapFilter('#filter-categoria')">
+      <ons-checkbox style="margin: 5px" input-id="check-2"></ons-checkbox>Categoria</ons-list-item>
+    <ons-list class="filter-home" id="filter-categoria"></ons-list>
+    <ons-list-item onclick="tapFilter('#filter-facultad')">
+      <ons-checkbox style="margin: 5px" input-id="check-3"></ons-checkbox>Facultad</ons-list-item>
+    <ons-list class="filter-home" id="filter-facultad"></ons-list>
+    <ons-list-item onclick="tapFilter('#filter-diahora')">
+      <ons-checkbox style="margin: 5px" input-id="check-4"></ons-checkbox>Dia/Hora</ons-list-item>
+    <ons-list class="filter-home" id="filter-diahora">
+
+    </ons-list>
+  </ons-card>
+  <!-- Filtros -->
+
+  <!-- Eventos -->
+  <div style="margin-top:10px"></div>
+  <ons-card>
+    <div class="filter-home" id="list-eventos">
+      <button>Reserva
+      </button>
+    </div>
+    <ons-card>
+      <!--fin Evnetos -->
+
+      <!--Barra de iconos Andres Sierra-->
+      <ons-tabbar position="down">
+        <ons-tab onclick="fn.load('index.html')" label="Próximos" spin icon="md-spinner" badge="99" active-icon="md-face" style="background:#0458a0">
+        </ons-tab>
+        <ons-tab onclick="fn.load('saved.html')" label="Guardados" icon="fa-file" active-icon="md-face" style="background:#0458a0">
+        </ons-tab>
+        <ons-tab onclick="fn.load('reserved.html')" label="Reservados" icon="ion-calendar" active-icon="md-face" style="background:#0458a0">
+        </ons-tab>
+      </ons-tabbar>
+      <!--Barra de iconos-->
+
+      <template id="saved.html">
+        <ons-page>
+          <p class="menueven">Aquí los eventos guardados.</p>
+        </ons-page>
+      </template>
+
+      <template id="index.html">
+        <script src="index.html"></script>
+      </template>
+
+      <template id="reserved.html">
+        <ons-page>
+          <p p class="menueven"> Aquí los eventos reservados. </p>
+        </ons-page>
+      </template>
+
+      <template id="settings.html">
+        <ons-page>
+          <p p class="menueven"> Configuraciones de mi app. </p>
+        </ons-page>
+      </template>
+
+      <template id="about.html">
+        <ons-page>
+          <p p class="menueven"> Aquí el credito del desarrollo. </p>
+        </ons-page>
+      </template>
+
+
+</body>
+
+</html>
