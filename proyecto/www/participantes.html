@@ -3,22 +3,22 @@
     <div class="left"><ons-back-button></ons-back-button></div>
   </ons-toolbar>
 
- <div class="sticky">
-  <ons-row>
-    <ons-col width="75%">
-      <input id="searchUser" type="search" value="" placeholder="Buscar Usuario" class="search-input" style="width:100%;height:100%">
-    </ons-col>
-    <ons-col>
-      <ons-button onclick="addUnknownUser()"  modifier="large">+</ons-button>
-    </ons-col>
-  </ons-row>
-   </div>
-
-  <ons-list id="list-participantes" >
+  <div class="sticky">
+    <ons-row>
+      <ons-col width="75%">
+        <input id="searchUser" type="search" value="" placeholder="Buscar Usuario" class="search-input" style="width:100%;height:100%">
+      </ons-col>
+      <ons-col>
+        <ons-button onclick="addUnknownUser()"  modifier="large">+</ons-button>
+      </ons-col>
+    </ons-row>
+  </div>
+  <ons-list id="list-participantes">
+    <ons-progress-bar style="margin: 3px auto;" indeterminate></ons-progress-bar>
   </ons-list>
 
   <ons-fab position="bottom right" onclick="confirmParticipantes()">
     <ons-icon icon="fa-check"></ons-icon>
   </ons-fab>
 
-  </ons-page>
+</ons-page>

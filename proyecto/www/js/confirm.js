@@ -5,7 +5,7 @@ document.addEventListener('show', function(event) {
   if (event.target.matches('#participantes')) {
     getParticipantes();
   }
-}, false);
+});
 
 /**
  * Método de transporte a la siguiente pantalla
@@ -24,7 +24,6 @@ var getParticipantes = function() {
         data: {
             evento: eventId
         },
-        timeout: 3000,
         method: "GET"
     }).then(function(data, textStatus, jqXHR) {
         createParticipantes(data.message);
@@ -39,6 +38,7 @@ var getParticipantes = function() {
 var createParticipantes = function(params) {
     var itemNode = document.getElementById("list-participantes");
     var htmlElement = "";
+
     for (let user of params) {
         var checkParticipante = "";
         if(user.ASISTIDO == 1) {
@@ -49,7 +49,6 @@ var createParticipantes = function(params) {
         htmlElement += `<label for="userEvent-${user.ID_EVENTO_USUARIO}" class="center"> ${user.NOMBRE_USUARIO} </label>\n`;
         htmlElement += `<div class="left">\n`;
         htmlElement += `<ons-checkbox modifier="noborder" ${checkParticipante} class="participante-check" input-id="userEvent-${user.ID_EVENTO_USUARIO}" value="${user.ID_EVENTO_USUARIO}">\n`;
-
         htmlElement += `</ons-checkbox>\n`;
         htmlElement += `</div>\n`;
         htmlElement += `</ons-list-item>\n`;
