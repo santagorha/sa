@@ -101,13 +101,25 @@ $app->get('/creditosDeUsuario', function () use ($app) {
   response($response['codeStatus'], $response);
 });
 
-$app->post('/consultarComentario', function () use ($app) {
+$app->get('/comentarios', function () use ($app) {
   $model = new Model();
   $data = array(
-    'evento' => $app->request->post('evento')
+    'evento' => $app->request->get('evento')
   );
   $ControllerComment = new controllerComment($model);
-  $response = $ControllerComment -> comment($data);
+  $response = $ControllerComment -> getComments($data);
+  response($response['codeStatus'],$response);
+});
+
+$app->post('/nuevoComentario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'evento' => $app->request->post('evento'),
+    'session' => $app->request->post('session'),
+    'comentario' => $app->request->post('comentario')
+  );
+  $ControllerComment = new controllerComment($model);
+  $response = $ControllerComment -> addComment($data);
   response($response['codeStatus'],$response);
 });
 
