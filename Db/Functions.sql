@@ -1,4 +1,5 @@
-CREATE  FUNCTION GET_ADD_USER_EVENT(usernameIn VARCHAR(20), nombre1In VARCHAR(20), nombre2In VARCHAR(20), apellido1In VARCHAR(20), apellido2In VARCHAR(20), nacimientoIn DATE, sexoIn TINYINT, ciudadIn TINYINT, eventoIn TINYINT) RETURNS varchar(20) CHARSET utf8
+CREATE  FUNCTION GET_ADD_USER_EVENT(usernameIn VARCHAR(20), nombre1In VARCHAR(20), nombre2In VARCHAR(20), apellido1In VARCHAR(20), apellido2In VARCHAR(20), nacimientoIn DATE, sexoIn TINYINT, ciudadIn TINYINT, eventoIn TINYINT)
+RETURNS varchar(20)
 BEGIN
 	DECLARE resultUser, resultEvent INTEGER;
     SET resultUser = -1;
