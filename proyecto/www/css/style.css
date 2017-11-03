@@ -1,0 +1,7 @@
+/*Usado para pegar la barra de búsqueda al top*/
+div.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 500;
+}
