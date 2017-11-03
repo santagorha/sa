@@ -1,0 +1,156 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+
+.toolbarmenu {
+  background: #2a77d6;
+  color: white;
+  font-size: 15px;
+  padding: 5px;
+  margin: 3px auto;
+  border-radius: 20px;
+  width: 100%;
+ }
+
+.search_bar {
+	width:100%;
+	float:left;
+	padding:7px 10px;
+	box-sizing:border-box;
+}
+
+.search_bar input {
+	height:auto;
+	border-radius:50px;
+	border:none;
+	border-bottom:1px solid #858585;
+	padding:0px 10px 0px 25px;
+	box-sizing:border-box;
+	height:22px;
+	box-shadow:inset 0px 1px 3px #d23f12;
+	background: linear-gradient(to bottom,  #7e7e7e 0%,#797979 50%,#6e6e6e 51%,#767676 100%); /* W3C */
+  transition: all .5s ease;
+  color: blue;
+}
+
+.search_bar input:focus {
+	background:#fff;
+	box-shadow:none;
+}
+
+.splittermenu{
+    background:#2a77d6;
+}
+
+.id {
+  visibility: hidden;
+}
+
+.img {
+  width:50%;
+  height:50%;
+  transition: background-color 0.5s;
+  overflow: hidden;
+  text-align: center;
+  top: 0;
+  margin:8px;
+}
+
+.nombre {
+  text-overflow: ellipsis;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  color: #45494e;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 0 0;
+}
+
+.text {
+  text-overflow: ellipsis;
+  font-size: x-small;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  color: #45494e;
+  line-height: 10px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding: 5px 0 0;
+}
+
+.parrafe{
+  text-align: justify;
+  height: 45px;
+  text-overflow: ellipsis;
+  font-size: x-small;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  color: #45494e;
+  line-height: 10px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding: 5px 0 0;
+}
+
+.but{
+  padding-left:20px;
+  background:#10305c;
+  display:block; 
+  margin-bottom:5px;
+}
+
+.cojainfoEvento {
+  letter-spacing: 0;
+  color: #282c35;
+  line-height: 19px;
+  font-weight: auto;
+  height: 200px;
+}
+
+.menueven {
+  text-align: center;
+  margin-top: 50px;
+  padding: 50px;
+}
+
+.list-item-container {
+  line-height: 1;
+  padding: 15px 0px 15px 15px;
+  box-shadow: 0 1px 2px #0076ff;
+  width: auto;
+  height: 350px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.name {
+  font-weight: 500;
+  line-height: 16px;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.location {
+  font-size: 14px;
+  opacity: 0.4;
+  margin-bottom: 6px;
+}
+
+.desc {
+  line-height: 1.2;
+  font-size: 13px;
+}
+
+
