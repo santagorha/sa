@@ -4,4 +4,8 @@ const URL_USER_SERVICE = "https://apppracticaaplicada.herokuapp.com/server/user"
 const URL_USERS_EVENT_SERVICE = "https://polipa2017.000webhostapp.com/server/usuariosEvento";
 const URL_CONFIRM_EVENT_SERVICE = "https://polipa2017.000webhostapp.com/server/asistencia";
 const URL_UNKNOW_USER_SERVICE = "https://polipa2017.000webhostapp.com/server/usuarioNuevoEvento";
+<<<<<<< HEAD
 const URL_COMMENT_SERVICE = "https://polipa2017.000webhostapp.com/server/consultarComentario";
+=======
+const URL_COMMENT_SERVICE = "https://polipa2017.000webhostapp.com/server/comentarios";
+>>>>>>> master

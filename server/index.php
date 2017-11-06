@@ -15,6 +15,7 @@ require './api/controllers/ControllerUser.php';
 require './api/controllers/ControllerUsersEvent.php';
 require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
 require './api/controllers/ControllerUserCredits.php'; //David Gualteros
+require './api/controllers/ControllerComment.php';
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
@@ -97,6 +98,16 @@ $app->get('/creditosDeUsuario', function () use ($app) {
   $response = $controllerUserCredits->getUserCredits($data);
 
   response($response['codeStatus'], $response);
+});
+
+$app->post('/consultarComentario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'evento' => $app->request->post('evento')
+  );
+  $ControllerComment = new controllerComment($model);
+  $response = $ControllerComment -> comment($data);
+  response($response['codeStatus'],$response);
 });
 
 function response($status_code, $response) {

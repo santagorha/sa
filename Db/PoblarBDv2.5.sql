@@ -36,3 +36,18 @@ INSERT INTO EVENTO_USUARIO VALUES
 (3, 2, 1, 0, 'ASISTENTE', 1, 0), 
 (4, 2, 2, 1, 'ASISTENTE', 0, 0), 
 (5, 3, 1, 1, 'ASISTENTE', 1, 1);
+INSERT INTO COMENTARIO VALUES 
+(112, 1, 1, now()),
+(113, 2, 2, now()),
+(114, 3, 3, now()),
+(115, 4, 3, now()),
+(116, 3, 2, now()),
+(117, 2, 1, now()),
+(118, 1, 2, now());
+INSERT INTO notificacion VALUES 
+(30,1,'evento','te invitamos al evento de futbol'),
+(31,2,'evento','te invitamos al evento de baloncesto'),
+(32,3,'evento','te invitamos al evento de danza'),
+(33,4,'evento','te invitamos al evento de guitarra'),
+(34,4,'evento','te invitamos al evento de tenis'),
+(35,2,'evento','te invitamos al evento de gym');

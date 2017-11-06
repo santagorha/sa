@@ -1,5 +1,4 @@
 <?php
-
 // CREACION BASE DE DATOS APPEVENTOS--------------------------------------------------------------------------------------------------------------------
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -17,8 +16,6 @@ echo "No se ha podido crear la base de datos por el siguiente error: ". mysql_er
 }
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREAN LAS TABLAS ---------------------------------------------------------------------------------------------------------------------------------
 //SE CREA LA TABLA INFO******************************************************************************************************************************** 
 // se selecciona servidor, usuario y contraseña
@@ -41,7 +38,6 @@ CREATE TABLE INFO(
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
 //SE CREA LA TABLA CIUDAD*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -64,8 +60,6 @@ CREATE TABLE CIUDAD(
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA FACULTAD*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -85,8 +79,6 @@ CREATE TABLE FACULTAD (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA SEDE*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -110,8 +102,6 @@ CREATE TABLE SEDE (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA TIPO USUARIO*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -131,8 +121,6 @@ CREATE TABLE TIPO_USUARIO (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA USUARIO*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -145,7 +133,7 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 CREATE TABLE USUARIO (
-	ID_USUARIO SMALLINT NOT NULL PRIMARY KEY, 
+	ID_USUARIO SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	NOMBRE_USUARIO VARCHAR(15) NOT NULL,
 	NOMBRE1 VARCHAR(25) NOT NULL,
 	NOMBRE2 VARCHAR(25),
@@ -155,7 +143,7 @@ CREATE TABLE USUARIO (
 	FECHA_NACIMIENTO DATE NOT NULL,
 	SEXO BOOL NOT NULL,
 	CIUDAD SMALLINT(2) NOT NULL,
-	FOTO VARCHAR(300) NOT NULL,
+	FOTO VARCHAR(300),
 	TIPO_USUARIO SMALLINT NOT NULL,
 	CONSTRAINT USUARIOS_TIPOSUSUARIOS FOREIGN KEY (TIPO_USUARIO) REFERENCES TIPO_USUARIO(ID_TIPO_USUARIO),
 	CONSTRAINT USUARIOS_CIUDADES FOREIGN KEY (CIUDAD) REFERENCES CIUDAD(ID_CIUDAD)
@@ -164,8 +152,6 @@ CREATE TABLE USUARIO (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA EVENTO*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -178,7 +164,7 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 CREATE TABLE EVENTO(
-	ID_EVENTO SMALLINT NOT NULL PRIMARY KEY,
+	ID_EVENTO SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	NOMBRE_EVENTO VARCHAR(50) NOT NULL,
 	FECHA DATETIME NOT NULL,
 	IMAGEN VARCHAR(300),
@@ -198,8 +184,6 @@ CREATE TABLE EVENTO(
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA SERIE*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -212,7 +196,7 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 CREATE TABLE SERIE (
-	ID_SERIE SMALLINT NOT NULL,
+	ID_SERIE SMALLINT NOT NULL AUTO_INCREMENT ,
 	ID_EVENTO SMALLINT NOT NULL,
 	CONSTRAINT PK_SERIES PRIMARY KEY (ID_SERIE, ID_EVENTO),
 	CONSTRAINT SERIES_EVENTOS FOREIGN KEY (ID_EVENTO) REFERENCES EVENTO(ID_EVENTO)
@@ -221,8 +205,6 @@ CREATE TABLE SERIE (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA EVENTO USUARIO*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -235,12 +217,13 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 CREATE TABLE EVENTO_USUARIO (
-	ID_EVENTO_USUARIO SMALLINT NOT NULL,
+	ID_EVENTO_USUARIO SMALLINT AUTO_INCREMENT NOT NULL,
 	ID_USUARIO SMALLINT NOT NULL,
 	ID_EVENTO SMALLINT NOT NULL,
 	ASISTIDO BOOL,
 	ROL_EVENTO VARCHAR(50) NOT NULL,
-	MARCA BOOL NOT NULL,
+	MARCA_GUARDADO BOOL NOT NULL DEFAULT FALSE,
+ 	MARCA_FAVORITO BOOL NOT NULL DEFAULT FALSE,
 	CONSTRAINT PK_EVENTOS_USUARIOS PRIMARY KEY (ID_EVENTO_USUARIO, ID_USUARIO, ID_EVENTO),
 	CONSTRAINT EVENTOS_USUARIOS_USUARIOS FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO (ID_USUARIO),
 	CONSTRAINT EVENTOS_USUARIOS_EVENTOS FOREIGN KEY (ID_EVENTO) REFERENCES EVENTO (ID_EVENTO)
@@ -249,9 +232,6 @@ CREATE TABLE EVENTO_USUARIO (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
-
 //SE CREA LA TABLA SESION*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -274,9 +254,6 @@ CREATE TABLE SESION (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
-
 //SE CREA LA TABLA LOG*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -289,7 +266,7 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 CREATE TABLE LOG (
-	ID_LOG SMALLINT NOT NULL PRIMARY KEY,
+	ID_LOG SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	ID_USUARIO SMALLINT NOT NULL,
 	NOMBRE_USUARIO VARCHAR(25) NOT NULL,
 	FECHA DATETIME NOT NULL,
@@ -300,8 +277,6 @@ CREATE TABLE LOG (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 //SE CREA LA TABLA CENTRO*******************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -328,7 +303,51 @@ CREATE TABLE CENTRO (
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
+//SE CREA LA TABLA COMENTARIO*******************************************************************************************************************************
+// se selecciona servidor, usuario y contraseña
+  $conexion = mysql_connect("localhost", "root", "");
+//se valida la conexion exitosa
+if(!$conexion){
+	die('No se ha podido conectar: '.mysql_error());
+}
+//selecciono la base de datos
+mysql_select_db("APPEVENTOS",$conexion);
+//se prepara la peticion
+$sql= "
+CREATE TABLE COMENTARIO (
+	ID_COMENTARIO SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ID_USUARIO SMALLINT NOT NULL,
+	ID_EVENTO SMALLINT NOT NULL,
+	FECHA DATETIME DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT FK_COMENTARIOS_USUARIOS FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
+	CONSTRAINT FK_COMENTARIOS_EVENTOS FOREIGN KEY (ID_EVENTO) REFERENCES EVENTO(ID_EVENTO)
+)";
+//se ejecuta la peticion
+mysql_query($sql, $conexion);
+// se cierra la conexion
+mysql_close($conexion);
+//SE CREA LA TABLA NOTIFICACION *******************************************************************************************************************************
+// se selecciona servidor, usuario y contraseña
+  $conexion = mysql_connect("localhost", "root", "");
+//se valida la conexion exitosa
+if(!$conexion){
+	die('No se ha podido conectar: '.mysql_error());
+}
+//selecciono la base de datos
+mysql_select_db("APPEVENTOS",$conexion);
+//se prepara la peticion
+$sql= "
+CREATE TABLE NOTIFICACION (
+	ID_NOTIFICACION SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ID_USUARIO SMALLINT NOT NULL,
+	TITULO VARCHAR(100) NOT NULL,
+	MENSAJE VARCHAR(200) NOT NULL,
+	CONSTRAINT FK_NOTIFICACION_USUARIO FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
+)";
+//se ejecuta la peticion
+mysql_query($sql, $conexion);
+// se cierra la conexion
+mysql_close($conexion);
 //POBLACION DE LAS TABLAS----------------------------------------------------------------------------------------------------------------------------------------
 // SE POBLA LA TABLA INFO****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
@@ -345,8 +364,6 @@ $sql= "INSERT INTO INFO VALUES (1, '2.5', '2017/10/09', 'ULTIMA VERSION'), (2, '
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA CIUDAD****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -362,7 +379,6 @@ $sql= "INSERT INTO CIUDAD VALUES (1, 'BOGOTA', 1), (2, 'MEDELLIN', 4), (3, 'PUER
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
 // SE POBLA LA TABLA FACULTAD****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -378,8 +394,6 @@ $sql= "INSERT INTO FACULTAD VALUES (1, 'INGENIERIA Y CIENCIAS BASICAS'), (2, 'ME
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA TIPO USUARIO****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -395,8 +409,6 @@ $sql= "INSERT INTO TIPO_USUARIO VALUES (1, 'ADMINISTRADOR'), (2,'USUARIO ESTANDA
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA SEDE ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -412,7 +424,6 @@ $sql= "INSERT INTO SEDE VALUES (1, 'SEDE BOGOTA', 'Calle 57 Nº 3-00 Este', 1, '
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
 // SE POBLA LA TABLA CENTRO ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -438,8 +449,6 @@ $sql= "INSERT INTO CENTRO VALUES
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA USUARIO ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -459,8 +468,6 @@ INSERT INTO USUARIO VALUES (1, 'DEGUALTEROS', 'DAVID', 'EDUARDO', 'GUALTEROS', '
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA EVENTO ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -480,8 +487,6 @@ INSERT INTO EVENTO VALUES
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA LOG ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -501,8 +506,6 @@ INSERT INTO LOG VALUES
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
-
 // SE POBLA LA TABLA EVENTO USUARIO ****************************************************************************************************************************************
 // se selecciona servidor, usuario y contraseña
   $conexion = mysql_connect("localhost", "root", "");
@@ -515,15 +518,63 @@ mysql_select_db("APPEVENTOS",$conexion);
 //se prepara la peticion
 $sql= "
 INSERT INTO EVENTO_USUARIO VALUES 
-(1, 4, 1, 0, 'ASISTENTE', 0),
-(2, 1, 3, 1, 'ASISTENTE', 1), 
-(3, 2, 1, 0, 'ASISTENTE', 1), 
-(4, 2, 2, 1, 'ASISTENTE', 0), 
-(5, 3, 1, 1, 'ASISTENTE', 1)
+(1, 4, 1, 0, 'ASISTENTE', 0, 1),
+(2, 1, 3, 1, 'ASISTENTE', 1, 1), 
+(3, 2, 1, 0, 'ASISTENTE', 1, 0), 
+(4, 2, 2, 1, 'ASISTENTE', 0, 0), 
+(5, 3, 1, 1, 'ASISTENTE', 1, 1);
 ";
 //se ejecuta la peticion
 mysql_query($sql, $conexion);
 // se cierra la conexion
 mysql_close($conexion);
-
+// SE POBLA LA TABLA COMENTARIO ****************************************************************************************************************************************
+// se selecciona servidor, usuario y contraseña
+  $conexion = mysql_connect("localhost", "root", "");
+//se valida la conexion exitosa
+if(!$conexion){
+	die('No se ha podido conectar: '.mysql_error());
+}
+//selecciono la base de datos
+mysql_select_db("APPEVENTOS",$conexion);
+//se prepara la peticion
+$sql= "
+INSERT INTO COMENTARIO VALUES 
+(110, 1, 1, now()),
+(111, 3, 1, now()),
+(112, 4, 1, now()),
+(113, 2, 2, now()),
+(114, 3, 3, now()),
+(115, 4, 3, now()),
+(116, 3, 2, now()),
+(117, 2, 1, now()),
+(118, 1, 2, now());
+";
+//se ejecuta la peticion
+mysql_query($sql, $conexion);
+// se cierra la conexion
+mysql_close($conexion);
+// SE POBLA LA TABLA NOTIFICACION ****************************************************************************************************************************************
+// se selecciona servidor, usuario y contraseña
+  $conexion = mysql_connect("localhost", "root", "");
+//se valida la conexion exitosa
+if(!$conexion){
+	die('No se ha podido conectar: '.mysql_error());
+}
+//selecciono la base de datos
+mysql_select_db("APPEVENTOS",$conexion);
+//se prepara la peticion
+$sql= "
+INSERT INTO NOTIFICACION VALUES 
+(30,1,'evento','te invitamos al evento de futbol'),
+(31,2,'evento','te invitamos al evento de baloncesto'),
+(32,3,'evento','te invitamos al evento de danza'),
+(33,4,'evento','te invitamos al evento de guitarra'),
+(34,4,'evento','te invitamos al evento de tenis'),
+(35,2,'evento','te invitamos al evento de gym');
+";
+//se ejecuta la peticion
+mysql_query($sql, $conexion);
+// se cierra la conexion
+mysql_close($conexion);
 ?>
