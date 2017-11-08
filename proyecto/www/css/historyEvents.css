@@ -1,0 +1,24 @@
+.page__background {
+    background-color: #0458a0;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto !important;
+}
+
+.err {
+    border-top: 1px solid rgba(255, 100, 50, 1);
+    border-right: 1px solid rgba(255, 100, 50, 1);
+    border-left: 1px solid rgba(255, 100, 50, 1);
+    border-bottom: 0px none white;
+}
+
+.input>input {
+    color: white;
+    text-align: center;
+}
+
+a {
+    color: white;
+}

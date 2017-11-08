@@ -13,8 +13,8 @@ require './persistence/Model.php';
 require './api/controllers/ControllerSession.php';
 require './api/controllers/ControllerUser.php';
 require './api/controllers/ControllerUsersEvent.php';
-require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
-require './api/controllers/ControllerUserCredits.php'; //David Gualteros
+require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros: Genera el historial de eventos de un usuario
+require './api/controllers/ControllerUserCredits.php'; //David Gualteros: Calcula la cantidad de creditos de un usuario
 require './api/controllers/ControllerComment.php';
 require './vendor/Slim/Slim.php';
 
