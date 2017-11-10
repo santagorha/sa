@@ -5,7 +5,7 @@ function historyEvents(){
         url: URL_EVENTS_USER_SERVICE,
         data: {
             user: userId
-        },
+            },
         timeout: 3000,
         method: "GET"
     }).then(function(data, textStatus, jqXHR) {
@@ -16,3 +16,7 @@ function historyEvents(){
         }
     });
 }
+
+var goHistoryEvents = function() {
+    document.querySelector("#myNavigator").pushPage("historialEventos.html");
+};
