@@ -1,18 +1,18 @@
+var userId = 3;
+
 function historyEvents(){
   $.ajax({
-    data: {"user": 1},
-    dataType: "json",
-    error: function (err){
-      var t = 1;
-      document.write(err.responseText);
-      console.log(err.responseJSON);
-    },
-    success: function(data){
-      if (data.codeStatus = 200) {
-        document.write(JSON.stringify(data));
-      }
-    },
-    type: "get",
-    url: URL_EVENTS_USER_SERVICE
-  });
+        url: URL_EVENTS_USER_SERVICE,
+        data: {
+            user: userId
+        },
+        timeout: 3000,
+        method: "GET"
+    }).then(function(data, textStatus, jqXHR) {
+        if (data.history) {
+            alert(JSON.stringify(data));            
+        } else {
+            ons.notification.alert("ERROR");
+        }
+    });
 }

@@ -7,14 +7,14 @@ class ControllerHistoryEvent {
   }
 
   public function getHistoryEvent($data) {
-    $eventId = $data["user"];
+    $userId = $data["user"];
     $this->model->entity = "EVENTO NATURAL JOIN EVENTO_USUARIO NATURAL JOIN USUARIO";
-    $this->model->id = array("NOMBRE_USUARIO" => $eventId,
-    "MARCA_GUARDADO" => true);
-    $event = $this->model->get();
+    $this->model->id = array("NOMBRE_USUARIO" => $userId,
+    "ASISTIDO" => true);
+    $events = $this->model->get();
     $response = array(
       "codeStatus" => OK,
-      "message" => $event
+      "message" => $events
     );
     return $response;
   }
