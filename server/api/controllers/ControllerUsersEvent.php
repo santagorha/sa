@@ -22,20 +22,21 @@ class ControllerUsersEvent {
   }
 
   public function setAsistencia($data) {
-    $eventIds = $data["eventos"];
-    $queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE";
-    $model = new Model();
-    $resultUncheck = "NO USERS";
-    if(!empty($eventIds)) {
-      $queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = TRUE WHERE ID_EVENTO_USUARIO IN ({$eventIds})";
-      $queryUncheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE WHERE ID_EVENTO_USUARIO NOT IN ({$eventIds})";
-      $resultUncheck = $model->setQuery($queryUncheck);
-    }
-    $resultCheck = $model->setQuery($queryCheck);
-    $result = array(
-      "resutlCheck" => $resultCheck,
-      "resutlUncheck" => $resultUncheck
-    );
+  $eventIds = $data["eventos"];
+	$eventId = $data["evento"];
+	$queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE WHERE ID_EVENTO = {$eventId}";
+	$model = new Model();
+	$resultUncheck = "NO USERS";
+	if(!empty($eventIds)) {
+		$queryCheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = TRUE WHERE  ID_EVENTO = {$eventId} AND ID_EVENTO_USUARIO IN ({$eventIds})";
+		$queryUncheck = "UPDATE EVENTO_USUARIO SET ASISTIDO = FALSE WHERE  ID_EVENTO = {$eventId} AND ID_EVENTO_USUARIO NOT IN ({$eventIds})";
+		$resultUncheck = $model->setQuery($queryUncheck);
+	}
+	$resultCheck = $model->setQuery($queryCheck);
+	$result = array(
+		"resutlCheck" => $resultCheck,
+		"resutlUncheck" => $resultUncheck
+	);
     $response = array(
       "codeStatus" => OK,
       "message" => $result

@@ -13,8 +13,8 @@ require './persistence/Model.php';
 require './api/controllers/ControllerSession.php';
 require './api/controllers/ControllerUser.php';
 require './api/controllers/ControllerUsersEvent.php';
-require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros
-require './api/controllers/ControllerUserCredits.php'; //David Gualteros
+require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros: Genera el historial de eventos de un usuario
+require './api/controllers/ControllerUserCredits.php'; //David Gualteros: Calcula la cantidad de creditos de un usuario
 require './api/controllers/ControllerComment.php';
 require './vendor/Slim/Slim.php';
 
@@ -59,7 +59,8 @@ $app->get('/usuariosEvento', function () use ($app) {
 $app->post('/asistencia', function () use ($app) {
   $model = new Model();
   $data = array(
-    'eventos' => $app->request->post('eventos')
+    'eventos' => $app->request->post('eventos'),
+    'evento' => $app->request->post('evento')
   );
   $controllerUsersEvent = new ControllerUsersEvent($model);
   $response = $controllerUsersEvent->setAsistencia($data);
@@ -83,7 +84,7 @@ $app->get('/eventosDeUsuario', function () use ($app) {
   $data = array(
     'user' => $app->request->get('user')
   );
-  $controllerHystoryEvent = new ControllerHistoryEvent($model);
+  $controllerHistoryEvent = new ControllerHistoryEvent($model);
   $response = $controllerHistoryEvent->getHistoryEvent($data);
   response($response['codeStatus'], $response);
 });
@@ -100,13 +101,25 @@ $app->get('/creditosDeUsuario', function () use ($app) {
   response($response['codeStatus'], $response);
 });
 
-$app->post('/consultarComentario', function () use ($app) {
+$app->get('/comentarios', function () use ($app) {
   $model = new Model();
   $data = array(
-    'evento' => $app->request->post('evento')
+    'evento' => $app->request->get('evento')
   );
   $ControllerComment = new controllerComment($model);
-  $response = $ControllerComment -> comment($data);
+  $response = $ControllerComment -> getComments($data);
+  response($response['codeStatus'],$response);
+});
+
+$app->post('/nuevoComentario', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'evento' => $app->request->post('evento'),
+    'session' => $app->request->post('session'),
+    'comentario' => $app->request->post('comentario')
+  );
+  $ControllerComment = new controllerComment($model);
+  $response = $ControllerComment -> addComment($data);
   response($response['codeStatus'],$response);
 });
 
