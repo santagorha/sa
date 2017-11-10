@@ -84,7 +84,7 @@ $app->get('/eventosDeUsuario', function () use ($app) {
   $data = array(
     'user' => $app->request->get('user')
   );
-  $controllerHystoryEvent = new ControllerHistoryEvent($model);
+  $controllerHistoryEvent = new ControllerHistoryEvent($model);
   $response = $controllerHistoryEvent->getHistoryEvent($data);
   response($response['codeStatus'], $response);
 });
