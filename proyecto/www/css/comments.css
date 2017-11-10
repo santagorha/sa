@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family:"Roboto", Arial, sans-serif, helvetica;
+
+}
+
+#commentElement{
+	overflow: visible;
+	width: 90%;
+	margin: 20px 0;
+	padding: 20px;
+	background: #fff;
+	overflow: hidden;
+	box-shadow: 0 0 3px grey;
+	max-width: 500px;
+	margin: auto;
+}
+
+
+.usuario{
+	display: inline-block;
+	width: 50%;
+	color: #0458a0;
+	
+}
+
+.fechaCommnet{
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	font-size: 10px;
+}
+
+.comment{
+	margin-top: 10px;
+	border-top: 2px solid #ccc;
+	height: 300px;
+	width: 400px;
+}
