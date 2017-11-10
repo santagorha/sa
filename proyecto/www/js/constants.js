@@ -7,4 +7,5 @@ const URL_UNKNOW_USER_SERVICE = "https://polipa2017.000webhostapp.com/server/usu
 const URL_COMMENT_SERVICE = "https://polipa2017.000webhostapp.com/server/comentarios";
 <<<<<<< HEAD
 =======
+const URL_EVENTS_USER_SERVICE = "https://practicaaplicada.000webhostapp.com/server/eventosDeUsuario";
 >>>>>>> 1b589b92f2726cb604fcc0943641d584756c8483
