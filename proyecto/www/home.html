@@ -13,9 +13,11 @@
 
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+
   
   <script src="js/menu.js"></script>
   <script src="js/Event.js"></script>
+  <script src="js/historyEvents.js"></script>
  
 </head>
 
@@ -113,6 +115,14 @@
     </div>
     <div class="tabbar__label">Reservados </div> 
   </button>
+
+  <button class="tabbar__button"><!--Btn Historial-->
+    <div class="tabbar__icon">
+      <ons-icon class="ons-icon ion-star ons-icon--ion" icon="ion-star" onclick="fn.load('historialEventos.html')" style="background:#0458a0"></ons-icon>
+    </div>
+    <div class="tabbar__label">Historial </div> 
+  </button>
+  
   </div>
 <!--Bar footer-->
 
