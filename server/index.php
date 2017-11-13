@@ -93,7 +93,7 @@ $app->get('/eventosDeUsuario', function () use ($app) {
 $app->get('/creditosDeUsuario', function () use ($app) {
   $model = new Model();
   $data = array(
-    'user' => $app->request->get('user')
+    'username' => $app->request->get('username')
   );
   $controllerUserCredits = new ControllerUserCredits($model);
   $response = $controllerUserCredits->getUserCredits($data);

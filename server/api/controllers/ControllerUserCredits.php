@@ -16,9 +16,9 @@ NATURAL JOIN USUARIO
 WHERE NOMBRE_USUARIO = 'DEGUALTEROS' AND ASISTIDO = 1;
  */
   public function getUserCredits($data) {
-    $username = $data["user"];
+    $username = $data["username"];
     $query = "SELECT SUM(CREDITOS) AS TOTAL_CREDITOS FROM EVENTO 
-    NATURAL JOIN EVENTO_USUARIO NATURAL JOIN USUARIO WHERE NOMBRE_USUARIO = ({$username}) AND ASISTIDO = 1 ";
+    NATURAL JOIN EVENTO_USUARIO NATURAL JOIN USUARIO WHERE NOMBRE_USUARIO = ".$username." AND ASISTIDO = 1";
     $model = new Model();
     $result = $model -> setQuery($query);
     $response = array("codeStatus" => OK, "message" => $result);
@@ -26,4 +26,3 @@ WHERE NOMBRE_USUARIO = 'DEGUALTEROS' AND ASISTIDO = 1;
   }
   
 }
-

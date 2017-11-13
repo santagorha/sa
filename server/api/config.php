@@ -1,9 +1,9 @@
 <?php
 
-define('DB_USER', 'ba7d4110111102');
-define('DB_PWD', '1f3c4ffc');
-define('DB_HOST', 'us-cdbr-iron-east-05.cleardb.net');
-define('DB_NAME', 'heroku_86264c8e82bf480');
+define('DB_USER', 'id3411511_root');
+define('DB_PWD', 'A1023886215*');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'id3411511_appeventos');
 //API KEY - MD5
 define('API_KEY', '82794e2221cc94c89090113685f1c839');
 //HTTP CODE RESPONSE
