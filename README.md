@@ -25,6 +25,7 @@ Ejemplo:
 6. Usar el modelo e interfaz diseñado por Daniel en server, donde se configuran las rutas en index.php y la lógica en el controller creado
 7. Use nombres claros y diciente, recuerde que js comparte variables, no usar nombres genéricos (para variables globales) como index, mejor use indexParticipantes o por el estilo
 8. Evite dejar código js en el html
+9. Para hacer paso entre páginas se puede usar por ahora pushPage y popPage (en las pruebas que he hecho hasta ahora no guarda el menú pero hace la transicion) [Navigator](https://onsen.io/v2/api/js/ons-navigator.html)
 
 ## Precondiciones de Software:
 1.  Registrarse en GitHub https://github.com (crear una cuenta)
