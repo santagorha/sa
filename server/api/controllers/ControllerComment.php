@@ -20,8 +20,11 @@ class ControllerComment {
         }*/
         $this->model->entity = 'COMENTARIO';
         $this->model->id = array('ID_COMENTARIO' => $data['evento']);
-        $response = $this->model->get();
-        $response['codeStatus'] = OK;
+        $result = $this->model->get();
+        $response = array(
+          'comentarios' => $result,
+          'codeStatus' => OK
+        );
         return $response;
         /*echo '<pre>';
         print_r($dataComment);
@@ -29,8 +32,9 @@ class ControllerComment {
     }
 
     public function addComment($data) {
+        $controllerSession = new ControllerSession($this->model);
+        $dataSession = $controllerSession->validateSession();
         $comentario = $data["evento"];
-	      $sessionId = $data["session"];
 	      $eventoId = $data["evento"];
         $model = new Model();
 

@@ -114,8 +114,7 @@ $app->get('/comentarios', function () use ($app) {
 $app->post('/nuevoComentario', function () use ($app) {
   $model = new Model();
   $data = array(
-    'evento' => $app->request->post('evento'),
-    'session' => $app->request->post('session'),
+    'evento' => $app->request->post('evento'),    
     'comentario' => $app->request->post('comentario')
   );
   $ControllerComment = new controllerComment($model);
