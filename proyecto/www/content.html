@@ -7,10 +7,31 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
-
   <script src="js/constants.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/event.js"></script>
 </head>
 <body>
- <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+  <ons-splitter>
+    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+      <ons-page>
+        <ons-list>
+          <ons-list-item onclick="fn.load('home.html')" tappable>
+            Home
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('settings.html')" tappable>
+            Settings
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('about.html')" tappable>
+            About
+          </ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content">
+      <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+    </ons-splitter-content>
+  </ons-splitter>
 </body>
 </html>
