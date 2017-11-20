@@ -1,3 +1,5 @@
+var indexEventos = 0;
+
 var filtrosEventos = {
   seccion: 0,
   lugarId: null,
@@ -11,6 +13,7 @@ var filtrosEventos = {
 
 document.addEventListener('init', function(event) {
   if (event.target.id === 'home'){
+    indexEventos = 0;
     getEventos();
   }
 });
@@ -68,9 +71,13 @@ var createEventos = function(params) {
     htmlElement += `</ons-button>\n`;
     htmlElement += `</ons-row>\n`;
     htmlElement += `</ons-card>\n`;
-
   }
-  itemNode.innerHTML = htmlElement;
+  
+  if(index === 0) {
+    itemNode.innerHTML = htmlElement;
+  } else {
+    itemNode.innerHTML += htmlElement;
+  }
 };
 
 var actualizarGuardado = function(idEvento) {
@@ -79,4 +86,48 @@ var actualizarGuardado = function(idEvento) {
 
 var actualizarFavorito = function(idEvento) {
   alert("por hacer" + idEvento);
+};
+
+var goToEvent = function(eventId) {
+  fn.load("eventDetail.html");
+};
+
+var createEvento = function(event) {
+  var itemNode = document.getElementById("list-eventos");
+  var htmlElement = "";
+  var marcaGuardado = "fa-bookmark";
+  var marcaFavorito = "fa-star";
+  //TODO cambiar validación
+  if (true) {
+    //En caso de no estar guardado
+    marcaGuardado += "-o";
+  }
+  //TODO cambiar validación
+  if (true) {
+    //En caso de no ser favorito
+    marcaFavorito += "-o";
+  }
+  htmlElement += `<ons-card>\n`;
+  htmlElement += `<div onclick="goToEvent(${event.ID_EVENTO})">\n`;
+  htmlElement += `<ons-row>\n`;
+  htmlElement += `${event.NOMBRE_EVENTO}\n`;
+  htmlElement += `</ons-row>\n`;
+  htmlElement += `<ons-row>\n`;
+  htmlElement += `${event.CATEGORIA}\n`;
+  htmlElement += `</ons-row>\n`;
+  htmlElement += `<ons-row>\n`;
+  htmlElement += `${event.FECHA_PROGRAMADO}\n`;
+  htmlElement += `</ons-row>\n`;
+  htmlElement += `</div>\n`;
+  htmlElement += `<ons-row>\n`;
+  htmlElement += `<ons-button modifier="quiet" onclick="actualizarFavorito(${event.ID_EVENTO})">`;
+  htmlElement += `<ons-icon icon="${marcaFavorito}"></ons-icon>\n`;
+  htmlElement += `</ons-button>\n`;
+  htmlElement += `<ons-button modifier="quiet" onclick="actualizarGuardado(${event.ID_EVENTO})">`;
+  htmlElement += `<ons-icon icon="${marcaGuardado}"></ons-icon>\n`;
+  htmlElement += `</ons-button>\n`;
+  htmlElement += `</ons-row>\n`;
+  htmlElement += `</ons-card>\n`;
+
+  itemNode.innerHTML = htmlElement;
 };

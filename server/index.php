@@ -141,6 +141,16 @@ $app->get('/eventos', function () use ($app) {
   response($response['codeStatus'],$response);
 });
 
+$app->get('/evento', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'evento' => $app->request->get('evento')
+  );
+  $controllerEvent = new ControllerEvent($model);
+  $response = $controllerEvent -> getEvent($data);
+  response($response['codeStatus'],$response);
+});
+
 function response($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     $app->status($status_code);
