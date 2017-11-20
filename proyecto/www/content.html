@@ -16,15 +16,25 @@
   <ons-splitter>
     <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
       <ons-page>
+        <ons-list-header>Eventos</ons-list-header>
         <ons-list>
           <ons-list-item onclick="fn.load('home.html')" tappable>
-            Home
+            Próximos eventos
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('guardados.html')" tappable>
+            Eventos guardados
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('misEventos.html')" tappable>
+            Mis Eventos
+          </ons-list-item>
+        </ons-list>
+        <ons-list-header>Otros</ons-list-header>
+        <ons-list>
+          <ons-list-item onclick="fn.load('historialEventos.html')" tappable>
+            Historial
           </ons-list-item>
           <ons-list-item onclick="fn.load('settings.html')" tappable>
-            Settings
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('about.html')" tappable>
-            About
+            Configuración
           </ons-list-item>
         </ons-list>
       </ons-page>
