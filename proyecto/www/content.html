@@ -12,11 +12,10 @@
   <script src="js/event.js"></script>
   <script src="js/historyEvents.js" ></script>
   <script src="js/userCredits.js" ></script>
-  <script src="js/alert.js"></script>
 </head>
 <body>
   <ons-splitter>
-    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+    <ons-splitter-side id="menu" side="left" width="220px" collapse>
       <ons-page>
         <ons-list-header>Eventos</ons-list-header>
         <ons-list>
@@ -41,8 +40,7 @@
         </ons-list>
       </ons-page>
     </ons-splitter-side>
-    <ons-splitter-content id="content">
-      <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+    <ons-splitter-content id="content" page="home.html">
     </ons-splitter-content>
   </ons-splitter>
 </body>

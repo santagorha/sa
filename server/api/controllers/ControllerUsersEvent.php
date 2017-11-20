@@ -16,7 +16,7 @@ class ControllerUsersEvent {
     $result = $this->model->get();
     $response = array(
       "codeStatus" => OK,
-      "message" => $result
+      "usuarios" => $result
     );
     return $response;
   }

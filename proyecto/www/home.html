@@ -6,11 +6,15 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
-  <ons-scroller style="height: 200px; width: 100%">
-    <ons-list class="filter-home" id="list-eventos"></ons-list>
-  </ons-scroller>
-  <ons-tabbar>
-  <ons-tab label="Tab 1" active></ons-tab>
-  <ons-tab label="Tab 2"></ons-tab>
-</ons-tabbar>
+
+  <div id="list-eventos">
+    <ons-button onclik="actualizarGuardado(0)">
+      Hello
+    </ons-button>
+  </div>
+
+  <!-- se descactiva por que está generando conflictos ons-tabbar>
+    <ons-tab label="Tab 1" active></ons-tab>
+    <ons-tab label="Tab 2"></ons-tab>
+  </ons-tabbar!-->
 </ons-page>

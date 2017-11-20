@@ -16,6 +16,7 @@ require './api/controllers/ControllerUsersEvent.php';
 require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros: Genera el historial de eventos de un usuario
 require './api/controllers/ControllerUserCredits.php'; //David Gualteros: Calcula la cantidad de creditos de un usuario
 require './api/controllers/ControllerComment.php';
+require './api/controllers/ControllerEvent.php';
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
@@ -106,8 +107,8 @@ $app->get('/comentarios', function () use ($app) {
   $data = array(
     'evento' => $app->request->get('evento')
   );
-  $ControllerComment = new controllerComment($model);
-  $response = $ControllerComment -> getComments($data);
+  $controllerComment = new ControllerComment($model);
+  $response = $controllerComment -> getComments($data);
   response($response['codeStatus'],$response);
 });
 
@@ -118,8 +119,25 @@ $app->post('/nuevoComentario', function () use ($app) {
     'session' => $app->request->post('session'),
     'comentario' => $app->request->post('comentario')
   );
-  $ControllerComment = new controllerComment($model);
-  $response = $ControllerComment -> addComment($data);
+  $controllerComment = new ControllerComment($model);
+  $response = $controllerComment -> addComment($data);
+  response($response['codeStatus'],$response);
+});
+
+$app->get('/eventos', function () use ($app) {
+  $model = new Model();
+  $data = array(
+    'seccion' => $app->request->get('seccion'),
+    'lugar' => $app->request->get('lugar'),
+    'horaInicial' => $app->request->get('horaInicial'),
+    'horaFinal' => $app->request->get('horaFinal'),
+    'fechaInicial' => $app->request->get('fechaInicial'),
+    'fechaFinal' => $app->request->get('fechaFinal'),
+    'categoria' => $app->request->get('categoria'),
+    'facultad' => $app->request->get('facultad')
+  );
+  $controllerEvent = new ControllerEvent($model);
+  $response = $controllerEvent -> getEvents($data);
   response($response['codeStatus'],$response);
 });
 

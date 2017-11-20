@@ -26,7 +26,7 @@ var getParticipantes = function() {
         },
         method: "GET"
     }).then(function(data, textStatus, jqXHR) {
-        createParticipantes(data.message);
+        createParticipantes(data.usuarios);
     });
 
 };

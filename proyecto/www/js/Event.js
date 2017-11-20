@@ -1,3 +1,14 @@
+var filtrosEventos = {
+  seccion: 0,
+  lugarId: null,
+  horaInicial: null,
+  horaFinal: null,
+  fechaInicial: null,
+  fechaFinal: null,
+  categoriaId: null,
+  facultadId: null
+};
+
 document.addEventListener('init', function(event) {
   if (event.target.id === 'home'){
     getEventos();
@@ -5,16 +16,16 @@ document.addEventListener('init', function(event) {
 });
 
 function getEventos ( ) { // Consumo de servicio
-	  $.ajax({
+  $.ajax({
     url: URL_EVENTHOME_SERVICE,
-    timeout: 3000,
-    dataType: "json",
+    timeout: 5000,
     method: 'GET',
+    data: filtrosEventos,
     error: function() {
       ons.notification.alert('Problemas con  la conexión');
     }
   }).done(function(data, textStatus, jqXHR) {
-       createEventos(data);
+    createEventos(data.eventos);
   });
 };
 
@@ -23,21 +34,49 @@ function getEventos ( ) { // Consumo de servicio
 var createEventos = function(params) {
   var itemNode = document.getElementById("list-eventos");
   var htmlElement = "";
-  var i = 0;
-  for(i in params) {
-    htmlElement += "<ons-list-item'>\n";
-    htmlElement += "<ons-card>\n";
-    htmlElement += "<span class='id'>"+params[i].ID_EVENTO +"</span>\n";
-    htmlElement += "<div class='nombre'>"+params[i].NOMBRE_EVENTO + "</div>\n";
-    htmlElement += "<span class='text'>"+params[i].FECHA + "</span>\n";
-    htmlElement += "<span class='text'>"+params[i].CATEGORIA + "</span>\n";
-    htmlElement += "<div class='parrafe'>"+params[i].DESCRIPCION + "</div>\n";
-    htmlElement += "<ons-button class='center'>"+'Reservar'+"</ons-button>\n";
-    htmlElement += "<ons-button >"+'Favorito'+"</ons-button>\n";
-    htmlElement += "<ons-button >"+'Ver más'+"</ons-button>\n";
-    htmlElement += "</ons-card >\n";
-    htmlElement += "</ons-list-item>\n";
+  for(let event of params) {
+    var marcaGuardado = "fa-bookmark";
+    var marcaFavorito = "fa-star";
+    //TODO cambiar validación
+    if (true) {
+      //En caso de no estar guardado
+      marcaGuardado += "-o";
     }
+    //TODO cambiar validación
+    if (true) {
+      //En caso de no ser favorito
+      marcaFavorito += "-o";
+    }
+    htmlElement += `<ons-card>\n`;
+    htmlElement += `<div onclick="goToEvent(${event.ID_EVENTO})">\n`;
+    htmlElement += `<ons-row>\n`;
+    htmlElement += `${event.NOMBRE_EVENTO}\n`;
+    htmlElement += `</ons-row>\n`;
+    htmlElement += `<ons-row>\n`;
+    htmlElement += `${event.CATEGORIA}\n`;
+    htmlElement += `</ons-row>\n`;
+    htmlElement += `<ons-row>\n`;
+    htmlElement += `${event.FECHA_PROGRAMADO}\n`;
+    htmlElement += `</ons-row>\n`;
+    htmlElement += `</div>\n`;
+    htmlElement += `<ons-row>\n`;
+    htmlElement += `<ons-button modifier="quiet" onclick="actualizarFavorito(${event.ID_EVENTO})">`;
+    htmlElement += `<ons-icon icon="${marcaFavorito}"></ons-icon>\n`;
+    htmlElement += `</ons-button>\n`;
+    htmlElement += `<ons-button modifier="quiet" onclick="actualizarGuardado(${event.ID_EVENTO})">`;
+    htmlElement += `<ons-icon icon="${marcaGuardado}"></ons-icon>\n`;
+    htmlElement += `</ons-button>\n`;
+    htmlElement += `</ons-row>\n`;
+    htmlElement += `</ons-card>\n`;
+
+  }
   itemNode.innerHTML = htmlElement;
-  $(window).trigger('resize');
+};
+
+var actualizarGuardado = function(idEvento) {
+  alert("por hacer" + idEvento);
+};
+
+var actualizarFavorito = function(idEvento) {
+  alert("por hacer" + idEvento);
 };
