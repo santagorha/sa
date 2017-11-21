@@ -72,8 +72,8 @@ var createEventos = function(params) {
     htmlElement += `</ons-row>\n`;
     htmlElement += `</ons-card>\n`;
   }
-  
-  if(index === 0) {
+
+  if(indexEventos === 0) {
     itemNode.innerHTML = htmlElement;
   } else {
     itemNode.innerHTML += htmlElement;
