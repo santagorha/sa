@@ -7,4 +7,5 @@ const URL_UNKNOW_USER_SERVICE = "https://polipa2017.000webhostapp.com/server/usu
 const URL_COMMENT_SERVICE = "https://polipa2017.000webhostapp.com/server/comentarios";
 const URL_EVENTS_USER_SERVICE = "https://practicaaplicada.000webhostapp.com/server/eventosDeUsuario";
 const URL_USER_CREDITS_SERVICE = "https://practicaaplicada.000webhostapp.com/server/creditosDeUsuario";
-const URL_EVENTHOME_SERVICE="https://polipa2017.000webhostapp.com/server/eventos";
+const URL_EVENT_HOME_SERVICE = "https://polipa2017.000webhostapp.com/server/eventos";
+const URL_EVENT_DETAIL_SERVICE = "https://polipa2017.000webhostapp.com/server/evento";

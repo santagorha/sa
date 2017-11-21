@@ -1,8 +1,8 @@
 /**
  * Event listener encargado de imprimir los participantes al evento
  */
-document.addEventListener('show', function(event) {
-  if (event.target.matches('#participantes')) {
+document.addEventListener("show", function(event) {
+  if (event.target.matches("#participantes")) {
     getParticipantes();
   }
 });

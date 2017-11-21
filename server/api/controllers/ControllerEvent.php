@@ -8,7 +8,6 @@ class ControllerEvent {
   }
 
   public function getEvents($data) {
-
     $seccion = $data["seccion"];
     $lugarId = $data["lugar"];
     $horaInicial = $data["horaInicial"];
@@ -58,7 +57,6 @@ class ControllerEvent {
   }
 
   public function getEvent($data) {
-
     $eventId = $data["evento"];
     #falta sesion para guardados y favoritos
     $this->model->entity = "CATEGORIA NATURAL JOIN EVENTO NATURAL JOIN FACULTAD";
@@ -67,10 +65,9 @@ class ControllerEvent {
 
     $response = array(
       "codeStatus" => OK,
-      "eventos" => $result
+      "evento" => $result[0]
     );
     return $response;
   }
-
 
 }
