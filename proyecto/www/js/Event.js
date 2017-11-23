@@ -1,5 +1,5 @@
 var indexEventos = 0;
-var eventId = -1;
+var eventId = 1;
 
 var filtrosEventos = {
   seccion: 0,
@@ -9,7 +9,8 @@ var filtrosEventos = {
   fechaInicial: null,
   fechaFinal: null,
   categoriaId: null,
-  facultadId: null
+  facultadId: null,
+  index: indexEventos
 };
 
 /**
@@ -35,7 +36,7 @@ function getEventos ( ) { // Consumo de servicio
     error: function() {
       ons.notification.alert("Problemas con  la conexión");
     }
-  }).done(function(data, textStatus, jqXHR) {
+  }).then(function(data, textStatus, jqXHR) {
     createEventos(data.eventos);
   });
 };
@@ -51,7 +52,7 @@ function getEvento ( ) { // Consumo de servicio
     error: function() {
       ons.notification.alert("Problemas con  la conexión");
     }
-  }).done(function(data, textStatus, jqXHR) {
+  }).then(function(data, textStatus, jqXHR) {
     createEvento(data.evento);
   });
 };
@@ -119,20 +120,18 @@ var createEvento = function(event) {
     marcaFavorito += "-o";
   }
 
-  htmlElement += `<div">\n`;
-  htmlElement += `<ons-row>\n`;
-  htmlElement += `${event.NOMBRE_EVENTO}\n`;
+  htmlElement += `<ons-row>`;
+  htmlElement += `${event.NOMBRE_EVENTO}`;
   htmlElement += `</ons-row>\n`;
-  htmlElement += `<ons-row>\n`;
-  htmlElement += `${event.CATEGORIA}\n`;
+  htmlElement += `<ons-row>`;
+  htmlElement += `${event.CATEGORIA}`;
   htmlElement += `</ons-row>\n`;
-  htmlElement += `<ons-row>\n`;
-  htmlElement += `${event.FECHA}\n`;
+  htmlElement += `<ons-row>`;
+  htmlElement += `${event.FECHA}`;
   htmlElement += `</ons-row>\n`;
-  htmlElement += `<ons-row>\n`;
-  htmlElement += `${event.DESCRIPCION}\n`;
+  htmlElement += `<ons-row>`;
+  htmlElement += `${event.DESCRIPCION}`;
   htmlElement += `</ons-row>\n`;
-  htmlElement += `</div>\n`;
   htmlElement += `<ons-row>\n`;
   htmlElement += `<ons-button modifier="quiet" onclick="actualizarFavorito(${event.ID_EVENTO})">\n`;
   htmlElement += `<ons-icon icon="${marcaFavorito}"></ons-icon>\n`;

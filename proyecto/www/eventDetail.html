@@ -6,6 +6,15 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
-  <div id="detalle-evento">
+
+  <div class="center" id="detalle-evento"></div>
+  <div>
+    <ons-row>
+      <textarea class="textarea" rows="5" placeholder="Textarea"></textarea>
+    </ons-row>
+    <ons-row>
+      <ons-button onclick="agregarComentario()">Agregar commentario</ons-button>
+    </ons-row>
+    <ons-list id="commentElement"></ons-list>
   </div>
 </ons-page>
