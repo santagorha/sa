@@ -2,6 +2,9 @@ var indexEventos = 0;
 var eventId = 1;
 var seccionId = 0;
 
+/**
+* Objeto js que contiene el estado de los filtros
+*/
 var filtrosEventos = {
   seccion: seccionId,
   lugarId: null,
@@ -22,10 +25,11 @@ document.addEventListener("init", function(event) {
     indexEventos = 0;
     eventId = -1;
     if(seccionId === 0) {
-      //MOSTRAR FILTROS
       getFiltros();
+      $(".filters").show();
+      $(".filter-home").hide();
     } else {
-      //OCULTAR FILTROS
+      $(".filters").hide();
     }
     getEventos();
   }
@@ -34,7 +38,10 @@ document.addEventListener("init", function(event) {
   }
 });
 
-function getFiltros ( ) { // Consumo de servicio
+/**
+* Consumo del ws para obtener los filtros de db
+*/
+function getFiltros ( ) {
   $.ajax({
     url: URL_FILTERS_SERVICE,
     timeout: 5000,
@@ -43,11 +50,14 @@ function getFiltros ( ) { // Consumo de servicio
       ons.notification.alert("Problemas con  la conexión");
     }
   }).then(function(data, textStatus, jqXHR) {
-    createFiltros(data.filtros);
+    createFiltros(data);
   });
 };
 
-function getEventos ( ) { // Consumo de servicio
+/**
+* Consumo del ws para la info de todos los eventos en próximos
+*/
+function getEventos ( ) {
   $.ajax({
     url: URL_EVENT_HOME_SERVICE,
     timeout: 5000,
@@ -61,7 +71,10 @@ function getEventos ( ) { // Consumo de servicio
   });
 };
 
-function getEvento ( ) { // Consumo de servicio
+/**
+* Consumo del ws para obtener los detalles del evento
+*/
+function getEvento ( ) {
   $.ajax({
     url: URL_EVENT_DETAIL_SERVICE,
     timeout: 2000,
@@ -77,42 +90,51 @@ function getEvento ( ) { // Consumo de servicio
   });
 };
 
+/**
+* Creación de filtros en la pantalla de búsqueda
+* @param {Object} params - Objeto retornado por el servicio que contiene la info de los filtros
+*/
 var createFiltros = function(params) {
-  var itemNode = document.getElementById("list-eventos");
-  var htmlElement = "";
-  for(let event of params) {    
-    htmlElement += `<ons-card>\n`;
-    htmlElement += `<div onclick="goToEvent(${event.ID_EVENTO})">\n`;
-    htmlElement += `<ons-row>\n`;
-    htmlElement += `${event.NOMBRE_EVENTO}\n`;
-    htmlElement += `</ons-row>\n`;
-    htmlElement += `<ons-row>\n`;
-    htmlElement += `${event.NOMBRE_CATEGORIA}\n`;
-    htmlElement += `</ons-row>\n`;
-    htmlElement += `<ons-row>\n`;
-    htmlElement += `${event.FECHA_PROGRAMADO}\n`;
-    htmlElement += `</ons-row>\n`;
-    htmlElement += `</div>\n`;
-    htmlElement += `<ons-row>\n`;
-    htmlElement += `<ons-button modifier="quiet" onclick="actualizarFavorito(${event.ID_EVENTO})">\n`;
-    htmlElement += `<ons-icon icon="${marcaFavorito}"></ons-icon>\n`;
-    htmlElement += `</ons-button>\n`;
-    htmlElement += `<ons-button modifier="quiet" onclick="actualizarGuardado(${event.ID_EVENTO})">\n`;
-    htmlElement += `<ons-icon icon="${marcaGuardado}"></ons-icon>\n`;
-    htmlElement += `</ons-button>\n`;
-    htmlElement += `</ons-row>\n`;
-    htmlElement += `</ons-card>\n`;
+  var itemNodeCategorias = document.getElementById("filters-categorias");
+  var itemNodeFacultades = document.getElementById("filters-facultades");
+  var itemNodeSedes = document.getElementById("filters-sedes");
+
+  var htmlElementCategorias = "";
+  var htmlElementFacultades = "";
+  var htmlElementSedes = "";
+
+  for(let categoria of params.categorias) {
+    htmlElementCategorias += "<ons-list-item>\n";
+    htmlElementCategorias += "<ons-checkbox value=\"" + categoria.ID_CATEGORIA + "\">\n";
+    htmlElementCategorias += categoria.NOMBRE_CATEGORIA + "\n";
+    htmlElementCategorias += "</ons-checkbox>\n";
+    htmlElementCategorias += "</ons-list-item>\n";
+  }
+  for(let facultad of params.facultades) {
+    htmlElementFacultades += "<ons-list-item>\n";
+    htmlElementFacultades += "<ons-checkbox value=\"" + facultad.ID_FACULTAD + "\">\n";
+    htmlElementFacultades += facultad.NOMBRE_FACULTAD + "\n";
+    htmlElementFacultades += "</ons-checkbox>\n";
+    htmlElementFacultades += "</ons-list-item>\n";
+  }
+  for(let sede of params.sedes) {
+    htmlElementSedes += "<ons-list-item>\n";
+    htmlElementSedes += "<ons-checkbox value=\"" + sede.ID_SEDE + "\">\n";
+    htmlElementSedes += sede.NOMBRE_SEDE + "\n";
+    htmlElementSedes += "</ons-checkbox>\n";
+    htmlElementSedes += "</ons-list-item>\n";
   }
 
-  if(indexEventos === 0) {
-    itemNode.innerHTML = htmlElement;
-  } else {
-    itemNode.innerHTML += htmlElement;
-  }
+  itemNodeCategorias.innerHTML = htmlElementCategorias;
+  itemNodeFacultades.innerHTML = htmlElementFacultades;
+  itemNodeSedes.innerHTML = htmlElementSedes;
 };
 
 
-// echo en html de consumo
+/**
+* Creación de contenido HTML de eventos
+* @param {Object} params - Objeto retornado por el servicio que contiene la info de los eventos
+*/
 var createEventos = function(params) {
   var itemNode = document.getElementById("list-eventos");
   var htmlElement = "";
@@ -159,6 +181,10 @@ var createEventos = function(params) {
   }
 };
 
+/**
+* Creación de detalles de evento
+* @param {Object} params - Objeto retornado por el servicio que contiene la info del evento
+*/
 var createEvento = function(event) {
   var itemNode = document.getElementById("detalle-evento");
   var htmlElement = "";
@@ -199,15 +225,35 @@ var createEvento = function(event) {
   itemNode.innerHTML = htmlElement;
 };
 
+/**
+* Actualización del guardado
+* @param {Object} params - Id del evento a guardar
+*/
 var actualizarGuardado = function(eventId) {
   alert("por hacer" + eventId);
 };
 
+/**
+* Actualización del favorito
+* @param {Object} params - Id del evento a ser favorito
+*/
 var actualizarFavorito = function(eventId) {
   alert("por hacer" + eventId);
 };
 
+/**
+* Navegación a evento
+* @param {Object} params - Id del evento a revisar
+*/
 var goToEvent = function(eventId) {
   this.eventId = eventId;
   fn.load("eventDetail.html");
+};
+
+/**
+* Despliega/repliega los filtros
+* @param {Object} params - Id del filtro a guardar
+*/
+var toogleFilter = function(filterId) {
+  $(filterId).toggle("slow");
 };

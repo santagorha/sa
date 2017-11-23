@@ -17,6 +17,7 @@ require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros: Gener
 require './api/controllers/ControllerUserCredits.php'; //David Gualteros: Calcula la cantidad de creditos de un usuario
 require './api/controllers/ControllerComment.php';
 require './api/controllers/ControllerEvent.php';
+require './api/controllers/ControllerParams.php';
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
