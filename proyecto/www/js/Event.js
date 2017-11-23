@@ -104,25 +104,25 @@ var createFiltros = function(params) {
   var htmlElementSedes = "";
 
   for(let categoria of params.categorias) {
-    htmlElementCategorias += "<ons-list-item>\n";
-    htmlElementCategorias += "<ons-checkbox value=\"" + categoria.ID_CATEGORIA + "\">\n";
-    htmlElementCategorias += categoria.NOMBRE_CATEGORIA + "\n";
-    htmlElementCategorias += "</ons-checkbox>\n";
-    htmlElementCategorias += "</ons-list-item>\n";
+    htmlElementCategorias += `<ons-list-item>\n`;
+    htmlElementCategorias += `<ons-checkbox class="check-categoria" value="${categoria.ID_CATEGORIA}">`;
+    htmlElementCategorias += `${categoria.NOMBRE_CATEGORIA}\n`;
+    htmlElementCategorias += `</ons-checkbox>\n`;
+    htmlElementCategorias += `</ons-list-item>\n`;
   }
   for(let facultad of params.facultades) {
-    htmlElementFacultades += "<ons-list-item>\n";
-    htmlElementFacultades += "<ons-checkbox value=\"" + facultad.ID_FACULTAD + "\">\n";
-    htmlElementFacultades += facultad.NOMBRE_FACULTAD + "\n";
-    htmlElementFacultades += "</ons-checkbox>\n";
-    htmlElementFacultades += "</ons-list-item>\n";
+    htmlElementCategorias += `<ons-list-item>\n`;
+    htmlElementCategorias += `<ons-checkbox class="check-facultad" value="${facultad.ID_FACULTAD}">`;
+    htmlElementCategorias += `${facultad.NOMBRE_FACULTAD}\n`;
+    htmlElementCategorias += `</ons-checkbox>\n`;
+    htmlElementCategorias += `</ons-list-item>\n`;
   }
   for(let sede of params.sedes) {
-    htmlElementSedes += "<ons-list-item>\n";
-    htmlElementSedes += "<ons-checkbox value=\"" + sede.ID_SEDE + "\">\n";
-    htmlElementSedes += sede.NOMBRE_SEDE + "\n";
-    htmlElementSedes += "</ons-checkbox>\n";
-    htmlElementSedes += "</ons-list-item>\n";
+    htmlElementCategorias += `<ons-list-item>\n`;
+    htmlElementCategorias += `<ons-checkbox class="check-sede" value="${sede.ID_SEDE}">`;
+    htmlElementCategorias += `${sede.NOMBRE_SEDE}\n`;
+    htmlElementCategorias += `</ons-checkbox>\n`;
+    htmlElementCategorias += `</ons-list-item>\n`;
   }
 
   itemNodeCategorias.innerHTML = htmlElementCategorias;
