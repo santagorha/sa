@@ -151,6 +151,13 @@ $app->get('/evento', function () use ($app) {
   response($response['codeStatus'],$response);
 });
 
+$app->get('/filtros', function () use ($app) {
+  $model = new Model();
+  $controllerParams = new ControllerParams($model);
+  $response = $controllerParams -> getFilters();
+  response($response['codeStatus'],$response);
+});
+
 function response($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     $app->status($status_code);
