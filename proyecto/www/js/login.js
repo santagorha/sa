@@ -52,7 +52,7 @@ function login() {
     success: function (data) {
       if (data.codeStatus === 200) {
         if (data.message === "authorized") {
-          redirect("content.html");
+          redirect("home.html");
         }
       }
     },
