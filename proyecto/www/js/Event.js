@@ -1,6 +1,6 @@
 document.addEventListener('deviceready', function(event) { 
    getEventos();
-   $(".filter-home").onkeyup();
+   $(".filter-home").onblur();
 });
 
   
@@ -52,18 +52,13 @@ var createEventos = function(params) {
 
 
 //Filter search bar
-var createEventos2 = function(params) { 
-  console.log(objt)
-  var objt2=[];
-  for(i in objt){
-    if (params===objt[i].SEDE
-      ) {
-     objt2.push(objt[i]);
-    }
-  }
-  
-  createEventos(objt2)
-  
+var createEventos2 = function(params) { //Params 
+   console.log(params);
+  $("#bbuscar").on("click",function(){ //Accion de button
+    var busqueda = $.getJSON("http://200.122.233.83/slim/public/api/eventos/buscar/"+params+"",function(datos){ //consumo y envio de parametro
+    createEventos(datos);
+    });
+ });
 };
 
 
