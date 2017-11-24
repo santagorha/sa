@@ -54,7 +54,7 @@ var createEventos2 = function(params) { //Params
    console.log(params);
   $("#bbuscar").on("click",function(){ //Accion de button
     var busqueda = $.getJSON("http://200.122.233.83/slim/public/api/eventos/buscar/"+params+"",function(datos){ //consumo y envio de parametro
-    createEventos(datos);
+    createEventos(datos); //se pasa el objeto al metodo para la publicacion.
     });
  });
 };
