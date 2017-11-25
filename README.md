@@ -1,5 +1,5 @@
 # practicaaplicada20172
-Repositorio para el proyecto de práctica aplicada en el 20172
+Repositorio para el proyecto de práctica aplicada en el 2017-2
 
     Precondiciones de Software:
 1.  Registrarse en GitHub https://github.com (crear una cuenta)
@@ -11,3 +11,5 @@ Repositorio para el proyecto de práctica aplicada en el 20172
 5.  Descargar e instalar NPM desde:
     https://www.npmjs.com/get-npm?utm_source=house&utm_medium=homepage&utm_campaign=free%20orgs&utm_term=Install%20npm
 6.  Descargar Apache Cordova desde https://cordova.apache.org/
+7.  Descargar HeidiSQL desde https://www.heidisql.com/
+8.  Descargar DIA desde http://dia-installer.de/index.html.es (portable)
