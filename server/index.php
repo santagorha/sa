@@ -17,6 +17,7 @@ require './api/controllers/ControllerHistoryEvent.php'; //David Gualteros: Gener
 require './api/controllers/ControllerUserCredits.php'; //David Gualteros: Calcula la cantidad de creditos de un usuario
 require './api/controllers/ControllerComment.php';
 require './api/controllers/ControllerEvent.php';
+require './api/controllers/ControllerParams.php';
 require './vendor/Slim/Slim.php';
 
 \Slim\Slim::registerAutoLoader();
@@ -148,6 +149,13 @@ $app->get('/evento', function () use ($app) {
   );
   $controllerEvent = new ControllerEvent($model);
   $response = $controllerEvent -> getEvent($data);
+  response($response['codeStatus'],$response);
+});
+
+$app->get('/filtros', function () use ($app) {
+  $model = new Model();
+  $controllerParams = new ControllerParams($model);
+  $response = $controllerParams -> getFilters();
   response($response['codeStatus'],$response);
 });
 

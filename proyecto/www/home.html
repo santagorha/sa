@@ -6,11 +6,17 @@
       </ons-toolbar-button>
     </div>
   </ons-toolbar>
-
+  <div id="filters">
+    <ons-list-header onclick="toogleFilter('#filters-categorias')">Categorias</ons-list-header>
+    <ons-list class="filter-home" id="filters-categorias"></ons-list>
+    <ons-list-header onclick="toogleFilter('#filters-facultades')">Facultades</ons-list-header>
+    <ons-list class="filter-home" id="filters-facultades"></ons-list>
+    <ons-list-header onclick="toogleFilter('#filters-sedes')">Sedes</ons-list-header>
+    <ons-list class="filter-home" id="filters-sedes"></ons-list>
+  </div>
   <div id="list-eventos"></div>
-
   <!-- se descactiva por que está generando conflictos ons-tabbar>
-    <ons-tab label="Tab 1" active></ons-tab>
-    <ons-tab label="Tab 2"></ons-tab>
-  </ons-tabbar!-->
+  <ons-tab label="Tab 1" active></ons-tab>
+  <ons-tab label="Tab 2"></ons-tab>
+</ons-tabbar!-->
 </ons-page>
