@@ -1,7 +1,5 @@
 <?php
 
-include 'DbModel.php';
-
 class Model extends DbModel {
 
     public $entity;

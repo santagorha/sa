@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
 <head>
-  <link rel="stylesheet" href="css/onsenui.css">
-  <link rel="stylesheet" href="css/onsen-css-components.min.css">
-  <script src="js/lib/onsenui.min.js"></script>
-  <script src="js/lib/jquery.min.js"></script>
-  <script src="cordova.js"></script>
-  <script src="js/auth/success.js"></script>
-  <script src="js/auth/logout.js"></script>
-  <script src="js/events/list.js"></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/osen-css-components.min.css">
+  <link rel="stylesheet" type="text/css" href="css/historyEvents.css">
+  <link rel="stylesheet" type="text/css" href="css/styleEventos.css">
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+  <script src="js/historyEvents.js"></script>
+  <script src="js/Event.js"></script>
+  <script src="js/constants.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/home.css">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <script type="text/javascript" src="js/general.js"></script>
+  <script type="text/javascript" src="js/home.js"></script>
+  <script src="js/confirm.js"></script>
 </head>
-
 <body>
-  <ons-navigator id="appNavigator" page="home.html">
-  </ons-navigator>
+ <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+ <h1>Pagina de content</h1>
+ <ons-button id="push-button" onclick="goHistoryEvents()">Historial de eventos</ons-button>
 </body>
-
 </html>
+  
