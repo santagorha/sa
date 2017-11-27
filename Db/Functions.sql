@@ -1,0 +1,24 @@
+CREATE  FUNCTION GET_ADD_USER_EVENT(usernameIn VARCHAR(20), nombre1In VARCHAR(20), nombre2In VARCHAR(20), apellido1In VARCHAR(20), apellido2In VARCHAR(20), nacimientoIn DATE, sexoIn TINYINT, ciudadIn TINYINT, eventoIn TINYINT)
+RETURNS varchar(20)
+BEGIN
+	DECLARE resultUser, resultEvent INTEGER;
+    SET resultUser = -1;
+    SET resultEvent = -1;
+
+    IF NOT EXISTS (SELECT ID_USUARIO FROM USUARIO WHERE NOMBRE_USUARIO = usernameIn)
+    THEN
+		INSERT INTO USUARIO (NOMBRE_USUARIO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, CORREO, FECHA_NACIMIENTO, SEXO, CIUDAD, TIPO_USUARIO)
+		VALUES (usernameIn, nombre1In, nombre2In, apellido1In, apellido2In, CONCAT(usernameIn, '@poligran.edu.co') , nacimientoIn, sexoIn, ciudadIn, 2);
+    END IF;
+
+	SELECT ID_USUARIO FROM USUARIO WHERE NOMBRE_USUARIO = usernameIn INTO resultUser;
+
+    IF NOT EXISTS (SELECT ID_EVENTO FROM EVENTO_USUARIO WHERE ID_EVENTO = eventoIn AND ID_USUARIO = resultUser)
+    THEN
+		INSERT INTO EVENTO_USUARIO (ID_USUARIO, ID_EVENTO, ROL_EVENTO, MARCA_GUARDADO)
+        VALUES (resultUser, eventoIn, 'Asistente', TRUE);
+	END IF;
+    SELECT ID_EVENTO FROM EVENTO_USUARIO WHERE ID_EVENTO_USUARIO = eventoIn INTO resultEvent;
+
+    RETURN  CONCAT('User:', resultUser, ',Event:', resultEvent);
+END

@@ -1,0 +1,46 @@
+.contentEditPerfil{
+	padding: 20px;
+}
+
+.btnEnviar{
+	margin: 10px 0px 0px;
+	background: #009688;
+	border: none;
+	padding: 5px 14px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.imgPerfil{
+	border: 1px solid #ccc;
+	color: #000;
+}
+
+
+.formEditEvento{
+	color: #000;
+}
+
+.formEditEvento input{
+	color: #000;
+}
+
+.tableEventos{
+	margin: 0px auto;
+}
+
+.tableEventos td,
+.tableEventos th{
+	color: #555 !important;
+	border: 1px solid #ddd !important;
+	padding: 5px 8px;
+}
+
+.tableEventos a{
+	color: #2196F3;
+
+}
+
+.tableEventos, th, td {
+    border-collapse: collapse;
+}
