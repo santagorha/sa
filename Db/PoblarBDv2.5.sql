@@ -68,7 +68,8 @@ INSERT INTO EVENTO_USUARIO VALUES
 (2, 1, 3, 1, 'ASISTENTE', 1, 1, 0, now()), 
 (3, 2, 1, 0, 'ASISTENTE', 1, 0, 0, '2017/01/09'), 
 (4, 2, 2, 1, 'ASISTENTE', 0, 0, 0, '2017/05/09'), 
-(5, 3, 1, 1, 'ASISTENTE', 1, 1, 0, now());
+(5, 3, 1, 1, 'ASISTENTE', 1, 1, 0, now()),
+(6, 1, 3, 1, 'ASISTENTE', 1, 0, 1, CURRENT_TIMESTAMP);
 
 INSERT INTO COMENTARIO VALUES 
 (1, 1, 1, 'MUY BUENO', now()),
