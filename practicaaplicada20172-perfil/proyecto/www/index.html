@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.min.css">
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+  <link rel="stylesheet" type="text/css" href="css/general.css">
+  <script src="js/constants.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/general.js"></script>
+</head>
+<ons-page>
+  <div class="center">
+    <img id="logo" alt="logo" class="logo" src="img/logo.jpg"/>
+  </div>
+  <div class="center">
+    <ons-input id="user" class="input" modifier="underbar" placeholder="Usuario" float></ons-input>
+  </div>
+  <div class="center margin-top">
+    <ons-input id="pwd" class="input" modifier="underbar" type="password" placeholder="Contraseña" float></ons-input>
+  </div>
+  <div class="center margin-top">
+    <ons-button id="login" onclick="login()" class="margin-left button">Iniciar sesión</ons-button>
+  </div>
+  <div class="center margin-top">
+    <a href="https://cpo.poligran.edu.co/">Olvidé mi contraseña</a>
+  </div>
+</ons-page>
+
+</body>
+</html>
