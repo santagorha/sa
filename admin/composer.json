@@ -1,0 +1,15 @@
+{
+    "name": "adminpracticaaplicada",
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/php-view": "^2.0",
+        "ext-ldap": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers/",
+            "Entitys\\": "src/entitys/",
+            "Persistence\\": "src/persistence/"
+        }
+    }
+}

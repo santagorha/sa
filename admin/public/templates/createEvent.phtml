@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link href="css/vendor/bootstrap-3.3.7.min.css" rel="stylesheet">
+        <link href="css/vendor/jquery-ui-1.12.1.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="container ">
+            <div class="page-header">
+                Aplicación de administración
+            </div>
+            <nav class="navbar navbar-default" role="navigation">
+                <!-- El logotipo y el icono que despliega el menú se agrupan
+                     para mostrarlos mejor en los dispositivos móviles -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home">Home</a>
+                </div>
+                <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+                     otro elemento que se pueda ocultar al minimizar la barra -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Eventos <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/createEvent">Crear evento</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Acciones hacia la aplicación<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Configurar mi usuario</a></li>
+                                <li class="divider"></li>
+                                <li class="text-center">
+                                    <form method="get" action="/logout">
+                                        <button type="submit" class="btn btn-danger">Cerrar la sesión</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--aqui va el codigo de la pagina-->
+            <form method="post" action="/createEvent" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="nombre_evento" class="col-lg-2 control-label">Nombre del evento</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="nombre_evento" id="nombre_evento" placeholder="Nombre del evento">
+                    </div>
+                    <label for="fecha" class="col-lg-2 control-label">Fecha del evento</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="fecha" id="fecha" placeholder="Fecha del evento">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imagen" class="col-lg-2 control-label">Imagen</label>
+                    <div class="col-lg-4">
+                        <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Imagen">
+                    </div>
+                    <label for="descripcion" class="col-lg-2 control-label">Descripción</label>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="categoria" class="col-lg-2 control-label">Categoria</label>
+                    <div class="col-lg-4">
+                        <select class="form-control" name="categoria" id="categoria">
+                            <?php
+                                for($i = 0; $i < count($categorys); $i++) {
+                                    echo '<option value=' . $categorys[$i]->getId_categoria() . '>';
+                                    echo $categorys[$i]->getNombre_categoria();
+                                    echo '</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <label for="sede" class="col-lg-2 control-label">Sede</label>
+                    <div class="col-lg-4">
+                        <select class="form-control" name="sede" id="sede">
+                            <?php
+                                for($i = 0; $i < count($headquarters); $i++) {
+                                    echo '<option value=' . $headquarters[$i]->getId_sede() . '>';
+                                    echo $headquarters[$i]->getNombre_sede();
+                                    echo '</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lugar" class="col-lg-2 control-label">Lugar</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Lugar">
+                    </div>
+                    <label for="cupos" class="col-lg-2 control-label">Cupos</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" name="cupos" id="cupos" placeholder="Cupos">
+                    </div>
+                </div>
+                <!--envio-->
+                <div class="form-group">
+                    <div class="col-lg-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Crear evento</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="js/vendor/jquery-3.2.1.min.js"></script>
+        <script src="js/vendor/jquery-ui-1.12.1.min.js"></script>
+        <script src="js/vendor/bootstrap-3.3.7.min.js"></script>
+        <script src="js/createEvent.js"></script>
+    </body>
+</html>
+
